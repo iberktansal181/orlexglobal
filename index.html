@@ -230,6 +230,25 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
 .card[hidden]{display:none}
 .filter-note{margin-top:20px;font-size:14.5px;color:var(--muted)}
 
+/* acilir urun listesi */
+.card{cursor:pointer;position:relative}
+.card .toggle{position:absolute;top:24px;right:22px;width:26px;height:26px;border-radius:50%;
+  background:var(--mist);display:flex;align-items:center;justify-content:center;
+  color:var(--navy);font-size:16px;font-weight:700;line-height:1;transition:transform .25s ease,background .2s ease}
+.card[aria-expanded="true"] .toggle{transform:rotate(45deg);background:var(--orange);color:#fff}
+.card .card-top{padding-right:34px}
+.card .list{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.card[aria-expanded="true"] .list{max-height:2200px}
+.card .list ol{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.card .list li{display:flex;gap:12px;padding:7px 0;font-size:.9rem;align-items:baseline}
+.card .list li+li{border-top:1px solid #F0F4F9}
+.card .list .c{flex:0 0 96px;color:var(--orange);font-weight:700;font-size:.82rem;letter-spacing:.02em}
+.card .list .n{color:var(--text)}
+@media(max-width:520px){
+  .card .list li{flex-direction:column;gap:2px}
+  .card .list .c{flex:none}
+}
+
 :focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important}
@@ -288,7 +307,7 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
   <div class="wrap">
     <span class="pill">Product range</span>
     <h2>Seventeen product groups, 276 references</h2>
-    <p class="intro">Each group carries its own code prefix and runs through the full size ladder. Use the filters to narrow by body region.</p>
+    <p class="intro">Each group carries its own code prefix and runs through the full size ladder. Use the filters to narrow by body region, or tap any group to see every reference it contains.</p>
 
     <div class="filters" role="group" aria-label="Filter product groups">
       <button class="chip" data-f="all" aria-pressed="true">All groups<span class="n">276</span></button>
@@ -303,122 +322,421 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
     <p class="filter-note" id="fnote">Showing all 17 product groups · 276 references</p>
 
     <div class="cards" id="cards">
-      <article class="card" data-cat="upper" style="--w:38%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="upper" style="--w:38%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Neck Collars</h3><span class="badge">12 refs</span></div>
         <div class="code">ORX-B</div>
         <p>Soft, semi-rigid and emergency collars, with and without chin support</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-B 201</span><span class="n">Soft Collar</span></li>
+          <li><span class="c">ORX-B 202</span><span class="n">Soft Collar With Plastic Support</span></li>
+          <li><span class="c">ORX-B 203</span><span class="n">Nelson Collar</span></li>
+          <li><span class="c">ORX-B 204</span><span class="n">Soft Collar With Chin Support</span></li>
+          <li><span class="c">ORX-B 205</span><span class="n">Cervical Collar With Chin</span></li>
+          <li><span class="c">ORX-B 207</span><span class="n">Philadelphia Collar</span></li>
+          <li><span class="c">ORX-B 208</span><span class="n">Trakeostomy Philadelphia Collar</span></li>
+          <li><span class="c">ORX-B 209</span><span class="n">Wire-Frame Collar</span></li>
+          <li><span class="c">ORX-B 210</span><span class="n">Emergency Collar</span></li>
+          <li><span class="c">ORX-B 211</span><span class="n">Minevra Orthesis</span></li>
+          <li><span class="c">ORX-B 212</span><span class="n">Nelson Collar Fabric Coated</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="upper" style="--w:9%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="upper" style="--w:9%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Shoulder Supports</h3><span class="badge">3 refs</span></div>
         <div class="code">ORX-O</div>
         <p>Shoulder immobilizers and abduction supports</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-O 301</span><span class="n">Shoulder Support</span></li>
+          <li><span class="c">ORX-O 303</span><span class="n">Clavicula Bandage</span></li>
+          <li><span class="c">ORX-O 303L</span><span class="n">Clavicula Bandage (Lux)</span></li>
+          <li><span class="c">ORX-O 305</span><span class="n">Humerus Brace</span></li>
+          <li><span class="c">ORX-O 305L</span><span class="n">Humerus Brace (Lux)</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="upper" style="--w:25%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="upper" style="--w:25%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Arm Supports</h3><span class="badge">8 refs</span></div>
         <div class="code">ORX-KL</div>
         <p>Arm slings, clavicle braces, Velpeau bandages</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-KL 310</span><span class="n">Standard Simple Arm Sling</span></li>
+          <li><span class="c">ORX-KL 311</span><span class="n">Standard Pratic Arm Sling</span></li>
+          <li><span class="c">ORX-KL 312</span><span class="n">Arm Sling Mesh</span></li>
+          <li><span class="c">ORX-KL 313</span><span class="n">Arm Sling Mesh With Belt</span></li>
+          <li><span class="c">ORX-KL 314</span><span class="n">Arm Sling Lux</span></li>
+          <li><span class="c">ORX-KL 315</span><span class="n">Velpo Bandage</span></li>
+          <li><span class="c">ORX-KL 316</span><span class="n">30 Degree Cushion Arm Sling</span></li>
+          <li><span class="c">ORX-KL 317</span><span class="n">45-60 Degree Cushion Arm Sling</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="upper" style="--w:38%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="upper" style="--w:38%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Elbow Supports</h3><span class="badge">12 refs</span></div>
         <div class="code">ORX-D</div>
         <p>Elbow sleeves, epicondylitis straps, hinged elbow braces</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-D 40</span><span class="n">Simple Elbow Support</span></li>
+          <li><span class="c">ORX-D 41</span><span class="n">Tennis Elbow Support</span></li>
+          <li><span class="c">ORX-D 42</span><span class="n">Elbow Support With Silicone</span></li>
+          <li><span class="c">ORX-D 43</span><span class="n">Cubital Tunnel Elbow Support</span></li>
+          <li><span class="c">ORX-D 44</span><span class="n">Neoprene Epicondylitis Bandage</span></li>
+          <li><span class="c">ORX-D 45</span><span class="n">Epicondilite Bandage With Silicone Pad</span></li>
+          <li><span class="c">ORX-D 46</span><span class="n">Epicondylitis Splint</span></li>
+          <li><span class="c">ORX-D 47</span><span class="n">Knitted Elbow Support</span></li>
+          <li><span class="c">ORX-D 48</span><span class="n">Knitted Elbow With Silicone Support</span></li>
+          <li><span class="c">ORX-D 49</span><span class="n">Arm Contractor Orthosis</span></li>
+          <li><span class="c">ORX-D 50</span><span class="n">Elbow Immobilizer</span></li>
+          <li><span class="c">ORX-D 51</span><span class="n">Adjustable Elbow Brace</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="upper" style="--w:84%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="upper" style="--w:84%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Hand, Wrist &amp; Finger Splints</h3><span class="badge">27 refs</span></div>
         <div class="code">ORX-E · ORX-P</div>
         <p>Wrist splints, thumb spicas, De Quervain and finger splints</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-E 70</span><span class="n">De Quervain Splint</span></li>
+          <li><span class="c">ORX-E 71</span><span class="n">Hand Wrist Splint (Short)</span></li>
+          <li><span class="c">ORX-E 72</span><span class="n">Hand Wrist Splint (Long)</span></li>
+          <li><span class="c">ORX-E 73</span><span class="n">Hand Wrist Splint With Thumb</span></li>
+          <li><span class="c">ORX-E 74</span><span class="n">Lace Hand Wrist Splint</span></li>
+          <li><span class="c">ORX-E 75</span><span class="n">Lace Hand Splint With Thumb</span></li>
+          <li><span class="c">ORX-E 76</span><span class="n">Mesh Hand Wrist Splint (Both Side)</span></li>
+          <li><span class="c">ORX-E 77</span><span class="n">Mest Hand Wrist Splint With Thumb</span></li>
+          <li><span class="c">ORX-E 78</span><span class="n">Knetted Hand Splint (Double Side)</span></li>
+          <li><span class="c">ORX-E 79</span><span class="n">Neoprene De Quervain Splint</span></li>
+          <li><span class="c">ORX-E 80</span><span class="n">Neoprene Hand Wrist Splint</span></li>
+          <li><span class="c">ORX-E 81</span><span class="n">Neoprene Hand Wrist Splint With Thumb</span></li>
+          <li><span class="c">ORX-E 82</span><span class="n">Neoprene Both Side Hand Wrist Splint</span></li>
+          <li><span class="c">ORX-E 83</span><span class="n">Simple Bandage</span></li>
+          <li><span class="c">ORX-E 84</span><span class="n">Hand Bandage</span></li>
+          <li><span class="c">ORX-P 1</span><span class="n">Aluminum Flat Finger Splint</span></li>
+          <li><span class="c">ORX-P 2</span><span class="n">Stabilization Finger Splint</span></li>
+          <li><span class="c">ORX-P 3</span><span class="n">Frog Finger Splint</span></li>
+          <li><span class="c">ORX-P 4</span><span class="n">Baseball Splint</span></li>
+          <li><span class="c">ORX-P 5</span><span class="n">Butonier Splint</span></li>
+          <li><span class="c">ORX-P 6</span><span class="n">Mallet Finger Splint</span></li>
+          <li><span class="c">ORX-P 7</span><span class="n">Curved Finger Splint</span></li>
+          <li><span class="c">ORX-P 8</span><span class="n">Protect Finger Splint</span></li>
+          <li><span class="c">ORX-TE 85</span><span class="n">Termoplastic Rest Splint</span></li>
+          <li><span class="c">ORX-TE 85L</span><span class="n">Termoplastic Rest Splint (Lux)</span></li>
+          <li><span class="c">ORX-TE 88</span><span class="n">Thermoplastic Dynamic Splint</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="spine" style="--w:94%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="spine" style="--w:94%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Corsets</h3><span class="badge">30 refs</span></div>
         <div class="code">ORX-K</div>
         <p>Lumbosacral and abdominal corsets, maternity and posture belts</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-K 501</span><span class="n">Chest Corset</span></li>
+          <li><span class="c">ORX-K 502</span><span class="n">Chest Corset With Steel Support</span></li>
+          <li><span class="c">ORX-K 503</span><span class="n">Corset For Umbilical Hernia</span></li>
+          <li><span class="c">ORX-K 504</span><span class="n">Abdominal Corset</span></li>
+          <li><span class="c">ORX-K 505</span><span class="n">Abdominal Corset (16cm)</span></li>
+          <li><span class="c">ORX-K 507</span><span class="n">Colostomy Corset (16cm)</span></li>
+          <li><span class="c">ORX-K 508</span><span class="n">Colostomy Corset (26cm)</span></li>
+          <li><span class="c">ORX-K 509</span><span class="n">Abdominal Corset With Pad</span></li>
+          <li><span class="c">ORX-K 510</span><span class="n">Woolen Corset</span></li>
+          <li><span class="c">ORX-K 511</span><span class="n">Camel Fur Corset</span></li>
+          <li><span class="c">ORX-K 512</span><span class="n">Posturex Bandage</span></li>
+          <li><span class="c">ORX-K 513</span><span class="n">Maternity Corset</span></li>
+          <li><span class="c">ORX-K 514</span><span class="n">Lumbostad Corset With Steel (26cm)</span></li>
+          <li><span class="c">ORX-K 516</span><span class="n">Dorsolomber Corset</span></li>
+          <li><span class="c">ORX-K 517</span><span class="n">Lumbostad Knitted Corset</span></li>
+          <li><span class="c">ORX-K 518</span><span class="n">Lumbosacral Corset With Special Support</span></li>
+          <li><span class="c">ORX-K 519</span><span class="n">Neoprene Abdominal Corset</span></li>
+          <li><span class="c">ORX-K 520</span><span class="n">Neoprene Lumbostad Corset (With Belt)</span></li>
+          <li><span class="c">ORX-K 521</span><span class="n">Neoprene Lumbostad Corset (With Plastic Support)</span></li>
+          <li><span class="c">ORX-K 522</span><span class="n">T.L.S.O Corset</span></li>
+          <li><span class="c">ORX-K 523</span><span class="n">Hyperextension Corset</span></li>
+          <li><span class="c">ORX-K 524</span><span class="n">Hyperextension Corset Lux</span></li>
+          <li><span class="c">ORX-K 525</span><span class="n">Hyperextension Corset (3 Points)</span></li>
+          <li><span class="c">ORX-K 526</span><span class="n">Hyperextension Corset (4 Points)</span></li>
+          <li><span class="c">ORX-K 527</span><span class="n">İnginual Hernia Ties (Single Side)</span></li>
+          <li><span class="c">ORX-K 528</span><span class="n">İnginual Hernia Ties (Double Side)</span></li>
+          <li><span class="c">ORX-K 529</span><span class="n">Pectus Carinatum Orthesis</span></li>
+          <li><span class="c">ORX-K 531</span><span class="n">Spinomed Corset</span></li>
+          <li><span class="c">ORX-K 533</span><span class="n">Posture Support Reminder</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="lower" style="--w:100%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="lower" style="--w:100%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Knee Supports</h3><span class="badge">32 refs</span></div>
         <div class="code">ORX-DZ · ORX-BL</div>
         <p>Knitted and hinged knee supports, patellar straps, immobilizers</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-DZ 11</span><span class="n">Closed Knee Support</span></li>
+          <li><span class="c">ORX-DZ 12</span><span class="n">Patella Knee Support</span></li>
+          <li><span class="c">ORX-DZ 13</span><span class="n">Patella &amp; Ligament Knee Support</span></li>
+          <li><span class="c">ORX-DZ 15</span><span class="n">Knee Support With Patella &amp; Ligament Half Open</span></li>
+          <li><span class="c">ORX-DZ 17</span><span class="n">Knee Support Steel Hinged Half Open</span></li>
+          <li><span class="c">ORX-DZ 19</span><span class="n">Knee Support Crossed</span></li>
+          <li><span class="c">ORX-DZ 20</span><span class="n">Adjustable Knee Support</span></li>
+          <li><span class="c">ORX-DZ 21</span><span class="n">Patellar Stabilization Knee Support</span></li>
+          <li><span class="c">ORX-DZ 22</span><span class="n">Supported Athelete Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 23</span><span class="n">After Arthroscopy Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 24</span><span class="n">Patellar Tendon Knee Supporter</span></li>
+          <li><span class="c">ORX-DZ 25</span><span class="n">Patellar Tendon Bandage</span></li>
+          <li><span class="c">ORX-DZ 27</span><span class="n">Camel Fur Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 28</span><span class="n">Knitted Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 29</span><span class="n">Knitted Patella Knee Support</span></li>
+          <li><span class="c">ORX-DZ 34</span><span class="n">Adjustable Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 35</span><span class="n">Adjustable Knee Brace (With Button)</span></li>
+          <li><span class="c">ORX-DZ 37</span><span class="n">Adjustable Knee Brace</span></li>
+          <li><span class="c">ORX-DZ 39</span><span class="n">Functional Knee Brace</span></li>
+          <li><span class="c">ORX-KA 1001</span><span class="n">HIP BRACE</span></li>
+          <li><span class="c">ORX-BL 601</span><span class="n">Tights Support</span></li>
+          <li><span class="c">ORX-BL 602</span><span class="n">Calf Support</span></li>
+          <li><span class="c">ORX-BL 603</span><span class="n">Hip Support</span></li>
+          <li><span class="c">ORX-BL 604</span><span class="n">Slimming Tights</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="lower" style="--w:53%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="lower" style="--w:53%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Ankle Supports &amp; Orthoses</h3><span class="badge">17 refs</span></div>
         <div class="code">ORX-A</div>
         <p>Ankle stirrups, malleolar supports, foot-drop orthoses</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-A 711</span><span class="n">Cross Strap Ankle Support</span></li>
+          <li><span class="c">ORX-A 712</span><span class="n">Malleol Ankle Support</span></li>
+          <li><span class="c">ORX-A 713</span><span class="n">Ligament Ankle Support</span></li>
+          <li><span class="c">ORX-A 714</span><span class="n">Lace Ankle Support</span></li>
+          <li><span class="c">ORX-A 715</span><span class="n">Dorsi Flexion Bandage</span></li>
+          <li><span class="c">ORX-A 716</span><span class="n">Knitted Ankle Support</span></li>
+          <li><span class="c">ORX-A 717</span><span class="n">Woven Malleon Ankle Support</span></li>
+          <li><span class="c">ORX-A 719</span><span class="n">Ankle Brace With (Aircast)</span></li>
+          <li><span class="c">ORX-A 720</span><span class="n">Ankle Brace With Pad</span></li>
+          <li><span class="c">ORX-A 721</span><span class="n">Rom Walker</span></li>
+          <li><span class="c">ORX-A 722</span><span class="n">Achill Boot</span></li>
+          <li><span class="c">ORX-A 723</span><span class="n">Foot Guard Afo</span></li>
+          <li><span class="c">ORX-A 724</span><span class="n">Foot Guard Afo Lux</span></li>
+          <li><span class="c">ORX-A 726</span><span class="n">Reflex Afo (PLZ Coated)</span></li>
+          <li><span class="c">ORX-A 727</span><span class="n">Ankle Brace With Gel</span></li>
+          <li><span class="c">ORX-A 728</span><span class="n">Air Walker</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="lower" style="--w:81%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="lower" style="--w:81%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Foot Health Products</h3><span class="badge">26 refs</span></div>
         <div class="code">ORX-AY</div>
         <p>Silicone insoles, heel cups, toe separators, metatarsal pads</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-AY 901</span><span class="n">Metatarsal Pillow (Arch Support)</span></li>
+          <li><span class="c">ORX-AY 903</span><span class="n">Silicone Epin Heel</span></li>
+          <li><span class="c">ORX-AY 905</span><span class="n">Silicone Insoles Covered With Fabric</span></li>
+          <li><span class="c">ORX-AY 906</span><span class="n">Silicone Insoles</span></li>
+          <li><span class="c">ORX-AY 907</span><span class="n">Silicone Insoles With Ark Support</span></li>
+          <li><span class="c">ORX-AY 908</span><span class="n">Silicone Epin Heel</span></li>
+          <li><span class="c">ORX-AY 909</span><span class="n">Silicone Toe Seperator</span></li>
+          <li><span class="c">ORX-AY 910</span><span class="n">Silicone Toe Finger Ring</span></li>
+          <li><span class="c">ORX-AY 911</span><span class="n">Silicone Bunion Protector With Toe Seperator</span></li>
+          <li><span class="c">ORX-AY 913</span><span class="n">Silicone Bunion Protector With Pad</span></li>
+          <li><span class="c">ORX-AY 914</span><span class="n">Silicone Metatarsal Ped With Loop</span></li>
+          <li><span class="c">ORX-AY 915</span><span class="n">Silicone Metatarsal Ped</span></li>
+          <li><span class="c">ORX-AY 917</span><span class="n">Starfleks Insoles</span></li>
+          <li><span class="c">ORX-AY 918</span><span class="n">Starfleks Insoles With Epin</span></li>
+          <li><span class="c">ORX-AY 919</span><span class="n">Cork Insoles</span></li>
+          <li><span class="c">ORX-AY 920</span><span class="n">Cork Insoles With Epin</span></li>
+          <li><span class="c">ORX-AY 921</span><span class="n">UCBL Insoles</span></li>
+          <li><span class="c">ORX-AY 922</span><span class="n">Steel Insoles</span></li>
+          <li><span class="c">ORX-AY 923</span><span class="n">Elastic Hallux Valgus Day Splint</span></li>
+          <li><span class="c">ORX-AY 924</span><span class="n">Hallux Valgus Night Splint</span></li>
+          <li><span class="c">ORX-AY 925</span><span class="n">Hallux Valgus Shoe</span></li>
+          <li><span class="c">ORX-AY 926</span><span class="n">Cast Shoe</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="lower" style="--w:9%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="lower" style="--w:9%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Mechanism Products</h3><span class="badge">3 refs</span></div>
         <div class="code">ORX-FIT</div>
         <p>ROM knee braces and walker boots with adjustable mechanisms</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-FIT 88</span><span class="n">Wrist Splint Mechanism System</span></li>
+          <li><span class="c">ORX-FIT 44</span><span class="n">Mechanism Epicondylitis Bandage</span></li>
+          <li><span class="c">ORX-A 726</span><span class="n">Mechanism Ankle Support</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="paed" style="--w:69%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="paed" style="--w:69%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Pediatric Products</h3><span class="badge">22 refs</span></div>
         <div class="code">ORX-CO · ORX-KA</div>
         <p>Child-sized collars, supports, splints and Pavlik harness</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-CO 811</span><span class="n">Soft Collar</span></li>
+          <li><span class="c">ORX-CO 811D</span><span class="n">Soft Collar</span></li>
+          <li><span class="c">ORX-CO 812</span><span class="n">Nelson Collar</span></li>
+          <li><span class="c">ORX-CO 813</span><span class="n">Philadelphia Collar</span></li>
+          <li><span class="c">ORX-CO 814</span><span class="n">Clavicula Bandage</span></li>
+          <li><span class="c">ORX-CO 815</span><span class="n">Arm Sling</span></li>
+          <li><span class="c">ORX-CO 816</span><span class="n">Velpeau Bandage</span></li>
+          <li><span class="c">ORX-CO 817</span><span class="n">Hand Wrist Splint</span></li>
+          <li><span class="c">ORX-CO 818</span><span class="n">Hand Wrist Splint With Thumb</span></li>
+          <li><span class="c">ORX-CO 820</span><span class="n">Child Inguinal Hernia Truss</span></li>
+          <li><span class="c">ORX-CO 821</span><span class="n">Pavlic Bandage</span></li>
+          <li><span class="c">ORX-CO 822</span><span class="n">Frejka Cushion</span></li>
+          <li><span class="c">ORX-CO 823</span><span class="n">D.K.C Orthosis</span></li>
+          <li><span class="c">ORX-CO 824</span><span class="n">Circumcision Panties</span></li>
+          <li><span class="c">ORX-CO 825</span><span class="n">Denis Browne Splint</span></li>
+          <li><span class="c">ORX-CO 826</span><span class="n">Hand Wrist Splint With Thumb</span></li>
+          <li><span class="c">ORX-CO 827</span><span class="n">Denis Brown Boot</span></li>
+          <li><span class="c">ORX-CO 828</span><span class="n">Patella Knee Support</span></li>
+          <li><span class="c">ORX-CO 829</span><span class="n">Immobilizer 25-30-35-40 cm</span></li>
+          <li><span class="c">ORX-CO 830</span><span class="n">Malleol Ankle Support</span></li>
+          <li><span class="c">ORX-CO 831</span><span class="n">Child Reflux Pillow</span></li>
+          <li><span class="c">ORX-KA 1003</span><span class="n">Tubingen Orthosis</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="comp" style="--w:53%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="comp" style="--w:53%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Surgical Stockings</h3><span class="badge">17 refs</span></div>
         <div class="code">ORX-V</div>
         <p>Graduated compression stockings and anti-embolism hosiery</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-V 1101</span><span class="n">Under Knee Surgical Stocking (Open Toe)</span></li>
+          <li><span class="c">ORX-V 1102</span><span class="n">Under Knee Surgical Stocking (Open Toe)</span></li>
+          <li><span class="c">ORX-V 1103</span><span class="n">Upper Knee Surgical Stocking (Open Toe)</span></li>
+          <li><span class="c">ORX-V 1104</span><span class="n">Upper Knee Surgical Stocking (Closed Toe)</span></li>
+          <li><span class="c">ORX-V 1105</span><span class="n">Pentyhose Surgical Stocking (Open Toe)</span></li>
+          <li><span class="c">ORX-V 1106</span><span class="n">Pentyhose Surgical Stocking (Closed Toe)</span></li>
+          <li><span class="c">ORX-V 1006</span><span class="n">Upper Knee Anti-Embolism Stocking</span></li>
+          <li><span class="c">ORX-V 1007</span><span class="n">Under Knee Anti-Embolism Stocking</span></li>
+          <li><span class="c">ORX-V 1008</span><span class="n">Thigh High Anti-Embolism Stocking (Waist Belt)</span></li>
+          <li><span class="c">ORX-V 1109</span><span class="n">Pregnant Pantyhose Stockings</span></li>
+          <li><span class="c">ORX-V 1009</span><span class="n">Varis Socks Dressing Apparatus</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="comp" style="--w:6%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="comp" style="--w:6%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Breast Prosthesis &amp; Bras</h3><span class="badge">2 refs</span></div>
         <div class="code">ORX-GP</div>
         <p>Silicone breast prostheses and post-mastectomy bras</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-GP 01</span><span class="n">Breast Prothesis Bra</span></li>
+          <li><span class="c">ORX-GP 02</span><span class="n">Silicone Breast Prothesis</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="rehab" style="--w:38%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="rehab" style="--w:38%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Rehabilitation Products</h3><span class="badge">12 refs</span></div>
         <div class="code">ORX-AKS</div>
         <p>Rehabilitation aids and orthopedic accessories</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-AKS 01</span><span class="n">Silicone Stress Ball</span></li>
+          <li><span class="c">ORX-AKS 03</span><span class="n">Adjustable Weight</span></li>
+          <li><span class="c">ORX-AKS 17</span><span class="n">Sand Weight</span></li>
+          <li><span class="c">ORX-AKS 08</span><span class="n">There Band</span></li>
+          <li><span class="c">ORX-AKS 14</span><span class="n">Hemoroid Bathtub</span></li>
+          <li><span class="c">ORX-AKS 20</span><span class="n">There Band</span></li>
+          <li><span class="c">ORX-AKS 27</span><span class="n">Kapaklı</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="rehab" style="--w:56%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="rehab" style="--w:56%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Pillows &amp; Seat Cushions</h3><span class="badge">18 refs</span></div>
         <div class="code">ORX-BOD · ORX-Y</div>
         <p>Visco pillows, positioning and pressure-relief cushions</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-Y 1202</span><span class="n">Visco Neck Pillow</span></li>
+          <li><span class="c">ORX-Y 1203</span><span class="n">Visco Neck Pillow With Gel (Anatomical)</span></li>
+          <li><span class="c">ORX-Y 1204</span><span class="n">Visco Classic Neck Pillow</span></li>
+          <li><span class="c">ORX-Y 1205</span><span class="n">Visco Classic Pillow With Gel</span></li>
+          <li><span class="c">ORX-Y 1206</span><span class="n">Visco Multi Purpose Pillow</span></li>
+          <li><span class="c">ORX-Y 1207</span><span class="n">Visco Travel Pillow</span></li>
+          <li><span class="c">ORX-Y 1208</span><span class="n">Reflux Pillow</span></li>
+          <li><span class="c">ORX-BOD 21</span><span class="n">Lumbar Cushion</span></li>
+          <li><span class="c">ORX-BOD 22</span><span class="n">Visco Lumbar Cushion</span></li>
+          <li><span class="c">ORX-BOD 24</span><span class="n">Seat Cushion</span></li>
+          <li><span class="c">ORX-BOD 25</span><span class="n">Visco Seat Cushion (Open)</span></li>
+          <li><span class="c">ORX-BOD 28</span><span class="n">Visco Wheelchair Cushion</span></li>
+          <li><span class="c">ORX-BOD 30</span><span class="n">Leg Position Cushion</span></li>
+          <li><span class="c">ORX-BOD 32</span><span class="n">Gluteal Seating Cushion</span></li>
+          <li><span class="c">ORX-BOD 34</span><span class="n">apers,</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="rehab" style="--w:25%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="rehab" style="--w:25%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Aluminium Group</h3><span class="badge">8 refs</span></div>
         <div class="code">ORX-KRD</div>
         <p>Walking frames, crutches, canes and mobility aids</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-KRD 61</span><span class="n">Moving Walker</span></li>
+          <li><span class="c">ORX-KRD 61L</span><span class="n">Moving Walker (Aluminium)</span></li>
+          <li><span class="c">ORX-KRD 61T</span><span class="n">Moving Walker (Wheeled)</span></li>
+          <li><span class="c">ORX-KRD 62</span><span class="n">Crutches</span></li>
+          <li><span class="c">ORX-KRD 63</span><span class="n">Canedien Elbow Crutches</span></li>
+          <li><span class="c">ORX-KRD 64</span><span class="n">Cane</span></li>
+          <li><span class="c">ORX-KRD 65</span><span class="n">Tripod</span></li>
+          <li><span class="c">ORX-KRD 66</span><span class="n">Quadtripot</span></li>
+          <li><span class="c">ORX-KRD 67</span><span class="n">Folding Comot</span></li>
+          <li><span class="c">ORX-KRD 67T</span><span class="n">Folding Comot (Wheeled)</span></li>
+          <li><span class="c">ORX-KRD 67D</span><span class="n">Folding Comot (Leather Upholstery)</span></li>
+          <li><span class="c">ORX-KRD 68</span><span class="n">Rubber Stick</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
 
-      <article class="card" data-cat="std" style="--w:84%">
+      <article class="card" aria-expanded="false" tabindex="0" role="button" data-cat="std" style="--w:84%">
+        <div class="toggle">+</div>
         <div class="card-top"><h3>Standard Size Products</h3><span class="badge">27 refs</span></div>
         <div class="code">ORX-ST</div>
         <p>Standard-sized line across shoulder, wrist, corset and support groups</p>
+        <div class="list"><ol>
+          <li><span class="c">ORX-ST 111</span><span class="n">Standard Shoulder Support</span></li>
+          <li><span class="c">ORX-ST 112</span><span class="n">Standard Velpeau Bandage</span></li>
+          <li><span class="c">ORX-ST 113</span><span class="n">Neoprene Standard De Quervain Splint</span></li>
+          <li><span class="c">ORX-ST 114</span><span class="n">Neoprene Standard Hand Splint</span></li>
+          <li><span class="c">ORX-ST 114Ç</span><span class="n">Neoprene Standard Hand Splint (Double Side)</span></li>
+          <li><span class="c">ORX-ST 116</span><span class="n">Standard Abdominal Corset</span></li>
+          <li><span class="c">ORX-ST 117</span><span class="n">Standard Posturex Bandage</span></li>
+          <li><span class="c">ORX-ST 117S</span><span class="n">Standard Posturex Bandage (Black)</span></li>
+          <li><span class="c">ORX-ST 118</span><span class="n">Standard Lumbostad Corset (26 cm)</span></li>
+          <li><span class="c">ORX-ST 119</span><span class="n">Standard Lumbosakral Corset (32 cm)</span></li>
+          <li><span class="c">ORX-ST 120</span><span class="n">Standard Dorsolomber Corset</span></li>
+          <li><span class="c">ORX-ST 121</span><span class="n">Neoprene Standard Abdominal Corset</span></li>
+          <li><span class="c">ORX-ST 123</span><span class="n">Standard Knee Support</span></li>
+          <li><span class="c">ORX-ST 124</span><span class="n">Standard Patella Knee Support</span></li>
+          <li><span class="c">ORX-ST 125</span><span class="n">Standard Patella &amp; Ligament Knee Support</span></li>
+          <li><span class="c">ORX-ST 127</span><span class="n">Standard Tight Support</span></li>
+          <li><span class="c">ORX-ST 128</span><span class="n">Standard Claft Support</span></li>
+          <li><span class="c">ORX-ST 129</span><span class="n">Standard Cross Bandage Ankle Support</span></li>
+          <li><span class="c">ORX-ST 131</span><span class="n">Standard Ligament Ankle Support</span></li>
+          <li><span class="c">ORX-ST 133</span><span class="n">Boxer’s Fracture Splint</span></li>
+          <li><span class="c">ORX-ST 134</span><span class="n">Standard Middle Finger’s Fracture Splint</span></li>
+          <li><span class="c">ORX-ST 138</span><span class="n">Standard Post - Operative Breast Bandage</span></li>
+          <li><span class="c">ORX-ST 141</span><span class="n">Standard Lux Hand Splint (Double Side)</span></li>
+        </ol></div>
         <div class="bar"><i></i></div>
       </article>
     </div>
@@ -536,6 +854,18 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
   window.addEventListener('resize',function(){if(window.innerWidth>960)set(false)});
 })();
 
+// kart acilir kapanir
+(function(){
+  document.querySelectorAll('.card').forEach(function(card){
+    if(!card.querySelector('.list')) return;
+    function tog(){card.setAttribute('aria-expanded',card.getAttribute('aria-expanded')!=='true')}
+    card.addEventListener('click',tog);
+    card.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}
+    });
+  });
+})();
+
 // urun filtresi
 (function(){
   var chips=document.querySelectorAll('.chip'),cards=document.querySelectorAll('.card'),
@@ -547,6 +877,7 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
       cards.forEach(function(card){
         var ok=(f==='all'||card.dataset.cat===f);
         card.hidden=!ok;
+        if(!ok)card.setAttribute('aria-expanded','false');
         if(ok){shown++;refs+=parseInt(card.querySelector('.badge').textContent)||0;
                card.classList.add('seen')}
       });
