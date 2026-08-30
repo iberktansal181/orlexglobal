@@ -206,10 +206,15 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
     transform:translateX(100%);transition:transform .3s cubic-bezier(.3,.8,.3,1);
     z-index:40;padding:88px 26px 26px;overflow-y:auto}
   .drawer.open{transform:none}
-  .drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--line);
+  .drawer a:not(.btn){display:block;padding:16px 0;border-bottom:1px solid var(--line);
     font-size:17px;font-weight:600;color:var(--navy);text-decoration:none}
-  .drawer .btn{margin-top:22px;text-align:center;border-bottom:0}
+  .drawer .btn{display:block;margin-top:22px;text-align:center}
   .drawer .btn.ghost{margin-top:12px}
+  .drawer-close{position:absolute;top:20px;right:22px;width:40px;height:40px;
+    border:1.5px solid var(--line);border-radius:12px;background:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+    color:var(--navy);line-height:1;padding:0}
+  .drawer-close:hover{border-color:var(--navy)}
   .scrim{position:fixed;inset:0;background:rgba(13,57,129,.4);opacity:0;pointer-events:none;
     transition:opacity .3s ease;z-index:35}
   .scrim.open{opacity:1;pointer-events:auto}
@@ -250,6 +255,7 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
 
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer">
+  <button class="drawer-close" id="dclose" aria-label="Close menu">&times;</button>
   <a href="#range">Product range</a>
   <a href="#compliance">Compliance</a>
   <a href="#terms">Trade terms</a>
@@ -519,8 +525,15 @@ footer a{color:var(--navy);text-decoration:none;font-weight:600}
     document.body.style.overflow=o?'hidden':''}
   b.addEventListener('click',function(){set(b.getAttribute('aria-expanded')!=='true')});
   s.addEventListener('click',function(){set(false)});
-  d.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
+  document.getElementById('dclose').addEventListener('click',function(){set(false)});
+  // sayfa icindeki HERHANGI bir baglantiya tiklaninca menuyu kapat (logo dahil)
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(a && d.classList.contains('open')) set(false);
+  });
   document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+  // ekran buyurse acik kalan menuyu sifirla
+  window.addEventListener('resize',function(){if(window.innerWidth>960)set(false)});
 })();
 
 // urun filtresi
