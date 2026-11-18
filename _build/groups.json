@@ -1,0 +1,1138 @@
+[
+{
+"cat": "upper",
+"name": "Neck Collars",
+"desc": "Soft, semi-rigid and Philadelphia collars, with and without chin support",
+"url": "https://orlex.com.tr/product-category/neck-collars/",
+"refs": [
+{
+"c": "ORX-B 201",
+"n": "Soft Collar"
+},
+{
+"c": "ORX-B 202",
+"n": "Soft Collar With Plastic Support"
+},
+{
+"c": "ORX-B 203",
+"n": "Nelson Collar"
+},
+{
+"c": "ORX-B 204",
+"n": "Soft Collar With Chin Support"
+},
+{
+"c": "ORX-B 205",
+"n": "Cervical Collar With Chin"
+},
+{
+"c": "ORX-B 207",
+"n": "Philadelphia Collar"
+},
+{
+"c": "ORX-B 208",
+"n": "Trakeostomy Philadelphia Collar"
+},
+{
+"c": "ORX-B 209",
+"n": "Wire-Frame Collar"
+},
+{
+"c": "ORX-B 210",
+"n": "Emergency Collar"
+},
+{
+"c": "ORX-B 211",
+"n": "Minevra Orthesis"
+},
+{
+"c": "ORX-B 212",
+"n": "Nelson Collar Fabric Coated"
+}
+]
+},
+{
+"cat": "upper",
+"name": "Shoulder Support",
+"desc": "Shoulder immobilizers, abduction supports and Velpeau bandages",
+"url": "https://orlex.com.tr/product-category/shoulder-support/",
+"refs": [
+{
+"c": "ORX-O 301",
+"n": "Shoulder Support"
+},
+{
+"c": "ORX-O 303",
+"n": "Clavicula Bandage"
+},
+{
+"c": "ORX-O 303L",
+"n": "Clavicula Bandage (Lux)"
+},
+{
+"c": "ORX-O 305",
+"n": "Humerus Brace"
+},
+{
+"c": "ORX-O 305L",
+"n": "Humerus Brace (Lux)"
+}
+]
+},
+{
+"cat": "upper",
+"name": "Arm Supports",
+"desc": "Arm slings, clavicle braces and upper-arm supports",
+"url": "https://orlex.com.tr/product-category/arm-support/",
+"refs": [
+{
+"c": "ORX-KL 310",
+"n": "Standard Simple Arm Sling"
+},
+{
+"c": "ORX-KL 311",
+"n": "Standard Practical Arm Sling"
+},
+{
+"c": "ORX-KL 312",
+"n": "Arm Sling Mesh"
+},
+{
+"c": "ORX-KL 313",
+"n": "Arm Sling Mesh With Belt"
+},
+{
+"c": "ORX-KL 314",
+"n": "Arm Sling Lux"
+},
+{
+"c": "ORX-KL 315",
+"n": "Velpeau Bandage"
+},
+{
+"c": "ORX-KL 316",
+"n": "30 Degree Cushion Arm Sling"
+},
+{
+"c": "ORX-KL 317",
+"n": "45-60 Degree Cushion Arm Sling"
+}
+]
+},
+{
+"cat": "upper",
+"name": "Elbow Supports",
+"desc": "Elbow sleeves, epicondylitis straps and mechanism bandages",
+"url": "https://orlex.com.tr/product-category/elbow-supports/",
+"refs": [
+{
+"c": "ORX-D 40",
+"n": "Simple Elbow Support"
+},
+{
+"c": "ORX-D 41",
+"n": "Tennis Elbow Support"
+},
+{
+"c": "ORX-D 42",
+"n": "Elbow Support With Silicone"
+},
+{
+"c": "ORX-D 43",
+"n": "Cubital Tunnel Elbow Support"
+},
+{
+"c": "ORX-D 44",
+"n": "Neoprene Epicondylitis Bandage"
+},
+{
+"c": "ORX-D 45",
+"n": "Epicondilite Bandage With Silicone Pad"
+},
+{
+"c": "ORX-D 46",
+"n": "Epicondylitis Splint"
+},
+{
+"c": "ORX-D 47",
+"n": "Knitted Elbow Support"
+},
+{
+"c": "ORX-D 48",
+"n": "Knitted Elbow With Silicone Support"
+},
+{
+"c": "ORX-D 49",
+"n": "Arm Contractor Orthosis"
+},
+{
+"c": "ORX-D 50",
+"n": "Elbow Immobilizer"
+},
+{
+"c": "ORX-D 51",
+"n": "Adjustable Elbow Brace"
+},
+{
+"c": "ORX-FIT 44",
+"n": "Mechanism Epicondylitis Bandage"
+}
+]
+},
+{
+"cat": "upper",
+"name": "Hand Wrist & Finger Splints",
+"desc": "Wrist splints, thumb spicas, De Quervain and finger splints",
+"url": "https://orlex.com.tr/product-category/hand-wrist-finger-splint/",
+"refs": [
+{
+"c": "ORX-E 70",
+"n": "De Quervain Splint"
+},
+{
+"c": "ORX-E 71",
+"n": "Hand Wrist Splint (Short)"
+},
+{
+"c": "ORX-E 72",
+"n": "Hand Wrist Splint (Long)"
+},
+{
+"c": "ORX-E 73",
+"n": "Hand Wrist Splint With Thumb"
+},
+{
+"c": "ORX-E 74",
+"n": "Lace Hand Wrist Splint"
+},
+{
+"c": "ORX-E 75",
+"n": "Lace Hand Splint With Thumb"
+},
+{
+"c": "ORX-E 76",
+"n": "Mesh Hand Wrist Splint (Both Side)"
+},
+{
+"c": "ORX-E 77",
+"n": "Mest Hand Wrist Splint With Thumb"
+},
+{
+"c": "ORX-E 78",
+"n": "Knetted Hand Splint (Double Side)"
+},
+{
+"c": "ORX-E 79",
+"n": "Neoprene De Quervain Splint"
+},
+{
+"c": "ORX-E 80",
+"n": "Neoprene Hand Wrist Splint"
+},
+{
+"c": "ORX-E 81",
+"n": "Neoprene Hand Wrist Splint With Thumb"
+},
+{
+"c": "ORX-E 82",
+"n": "Neoprene Both Side Hand Wrist Splint"
+},
+{
+"c": "ORX-E 83",
+"n": "Simple Bandage"
+},
+{
+"c": "ORX-E 84",
+"n": "Hand Bandage"
+},
+{
+"c": "ORX-FIT 88",
+"n": "Wrist Splint Mechanism System"
+},
+{
+"c": "ORX-P 1",
+"n": "Aluminum Flat Finger Splint"
+},
+{
+"c": "ORX-P 2",
+"n": "Stabilization Finger Splint"
+},
+{
+"c": "ORX-P 3",
+"n": "Frog Finger Splint"
+},
+{
+"c": "ORX-P 4",
+"n": "Baseball Splint"
+},
+{
+"c": "ORX-P 5",
+"n": "Butonier Splint"
+},
+{
+"c": "ORX-P 6",
+"n": "Mallet Finger Splint"
+},
+{
+"c": "ORX-P 7",
+"n": "Curved Finger Splint"
+},
+{
+"c": "ORX-P 8",
+"n": "Protect Finger Splint"
+},
+{
+"c": "ORX-TE 85",
+"n": "Termoplastic Rest Splint"
+},
+{
+"c": "ORX-TE 85L",
+"n": "Termoplastic Rest Splint (Lux)"
+},
+{
+"c": "ORX-TE 88",
+"n": "Thermoplastic Dynamic Splint"
+}
+]
+},
+{
+"cat": "spine",
+"name": "Corsets",
+"desc": "Lumbosacral, abdominal, maternity and hyperextension corsets",
+"url": "https://orlex.com.tr/product-category/corsets/",
+"refs": [
+{
+"c": "ORX-K 501",
+"n": "Chest Corset"
+},
+{
+"c": "ORX-K 502",
+"n": "Chest Corset With Steel Support"
+},
+{
+"c": "ORX-K 503",
+"n": "Corset For Umbilical Hernia"
+},
+{
+"c": "ORX-K 504",
+"n": "Abdominal Corset"
+},
+{
+"c": "ORX-K 505",
+"n": "Abdominal Corset (16cm)"
+},
+{
+"c": "ORX-K 507",
+"n": "Colostomy Corset (16cm)"
+},
+{
+"c": "ORX-K 508",
+"n": "Colostomy Corset (26cm)"
+},
+{
+"c": "ORX-K 509",
+"n": "Abdominal Corset With Pad"
+},
+{
+"c": "ORX-K 510",
+"n": "Woolen Corset"
+},
+{
+"c": "ORX-K 511",
+"n": "Camel Fur Corset"
+},
+{
+"c": "ORX-K 512",
+"n": "Posturex Bandage"
+},
+{
+"c": "ORX-K 513",
+"n": "Maternity Corset"
+},
+{
+"c": "ORX-K 514",
+"n": "Lumbostad Corset With Steel (26cm)"
+},
+{
+"c": "ORX-K 516",
+"n": "Dorsolomber Corset"
+},
+{
+"c": "ORX-K 517",
+"n": "Lumbostad Knitted Corset"
+},
+{
+"c": "ORX-K 518",
+"n": "Lumbosacral Corset With Special Support"
+},
+{
+"c": "ORX-K 519",
+"n": "Neoprene Abdominal Corset"
+},
+{
+"c": "ORX-K 520",
+"n": "Neoprene Lumbostad Corset (With Belt)"
+},
+{
+"c": "ORX-K 521",
+"n": "Neoprene Lumbostad Corset (With Plastic Support)"
+},
+{
+"c": "ORX-K 522",
+"n": "T.L.S.O Corset"
+},
+{
+"c": "ORX-K 523",
+"n": "Hyperextension Corset"
+},
+{
+"c": "ORX-K 524",
+"n": "Hyperextension Corset Lux"
+},
+{
+"c": "ORX-K 525",
+"n": "Hyperextension Corset (3 Points)"
+},
+{
+"c": "ORX-K 526",
+"n": "Hyperextension Corset (4 Points)"
+},
+{
+"c": "ORX-K 527",
+"n": "Inguinal Hernia Truss (Single Side)"
+},
+{
+"c": "ORX-K 528",
+"n": "Inguinal Hernia Truss (Double Side)"
+},
+{
+"c": "ORX-K 529",
+"n": "Pectus Carinatum Orthesis"
+},
+{
+"c": "ORX-K 531",
+"n": "Spinomed Corset"
+},
+{
+"c": "ORX-K 533",
+"n": "Posture Support Reminder"
+}
+]
+},
+{
+"cat": "lower",
+"name": "Knee Supports",
+"desc": "Knitted and hinged knee supports, patellar straps, immobilizers",
+"url": "https://orlex.com.tr/product-category/knee-supports/",
+"refs": [
+{
+"c": "ORX-DZ 11",
+"n": "Closed Knee Support"
+},
+{
+"c": "ORX-DZ 12",
+"n": "Patella Knee Support"
+},
+{
+"c": "ORX-DZ 13",
+"n": "Patella & Ligament Knee Support"
+},
+{
+"c": "ORX-DZ 15",
+"n": "Knee Support With Patella & Ligament Half Open"
+},
+{
+"c": "ORX-DZ 17",
+"n": "Knee Support Steel Hinged Half Open"
+},
+{
+"c": "ORX-DZ 19",
+"n": "Knee Support Crossed"
+},
+{
+"c": "ORX-DZ 20",
+"n": "Adjustable Knee Support"
+},
+{
+"c": "ORX-DZ 21",
+"n": "Patellar Stabilization Knee Support"
+},
+{
+"c": "ORX-DZ 22",
+"n": "Supported Athelete Knee Brace"
+},
+{
+"c": "ORX-DZ 23",
+"n": "After Arthroscopy Knee Brace"
+},
+{
+"c": "ORX-DZ 24",
+"n": "Patellar Tendon Knee Supporter"
+},
+{
+"c": "ORX-DZ 25",
+"n": "Patellar Tendon Bandage"
+},
+{
+"c": "ORX-DZ 27",
+"n": "Camel Fur Knee Brace"
+},
+{
+"c": "ORX-DZ 28",
+"n": "Knitted Knee Brace"
+},
+{
+"c": "ORX-DZ 29",
+"n": "Knitted Patella Knee Support"
+},
+{
+"c": "ORX-DZ 34",
+"n": "Adjustable Knee Brace"
+},
+{
+"c": "ORX-DZ 35",
+"n": "Adjustable Knee Brace (With Button)"
+},
+{
+"c": "ORX-DZ 37",
+"n": "Adjustable Knee Brace"
+},
+{
+"c": "ORX-DZ 39",
+"n": "Functional Knee Brace"
+}
+]
+},
+{
+"cat": "lower",
+"name": "Calf & Tights Support",
+"desc": "Calf and thigh supports, slimming tights",
+"url": "https://orlex.com.tr/product-category/calf-tights-support/",
+"refs": [
+{
+"c": "ORX-BL 601",
+"n": "Tights Support"
+},
+{
+"c": "ORX-BL 602",
+"n": "Calf Support"
+},
+{
+"c": "ORX-BL 603",
+"n": "Hip Support"
+},
+{
+"c": "ORX-BL 604",
+"n": "Slimming Tights"
+}
+]
+},
+{
+"cat": "lower",
+"name": "Ankle Support & Orthosis",
+"desc": "Ankle stirrups, malleolar supports, foot-drop orthoses",
+"url": "https://orlex.com.tr/product-category/ankle-support-orthosis/",
+"refs": [
+{
+"c": "ORX-A 711",
+"n": "Cross Strap Ankle Support"
+},
+{
+"c": "ORX-A 712",
+"n": "Malleol Ankle Support"
+},
+{
+"c": "ORX-A 713",
+"n": "Ligament Ankle Support"
+},
+{
+"c": "ORX-A 714",
+"n": "Lace Ankle Support"
+},
+{
+"c": "ORX-A 715",
+"n": "Dorsi Flexion Bandage"
+},
+{
+"c": "ORX-A 716",
+"n": "Knitted Ankle Support"
+},
+{
+"c": "ORX-A 717",
+"n": "Woven Malleon Ankle Support"
+},
+{
+"c": "ORX-A 719",
+"n": "Ankle Brace With (Aircast)"
+},
+{
+"c": "ORX-A 720",
+"n": "Ankle Brace With Pad"
+},
+{
+"c": "ORX-A 721",
+"n": "ROM Walker"
+},
+{
+"c": "ORX-A 722",
+"n": "Achill Boot"
+},
+{
+"c": "ORX-A 723",
+"n": "Foot Guard AFO"
+},
+{
+"c": "ORX-A 724",
+"n": "Foot Guard Afo Lux"
+},
+{
+"c": "ORX-A 726",
+"n": "Reflex Afo (PLZ Coated)"
+},
+{
+"c": "ORX-A 726",
+"n": "Mechanism Ankle Support"
+},
+{
+"c": "ORX-A 727",
+"n": "Ankle Brace With Gel"
+},
+{
+"c": "ORX-A 728",
+"n": "Air Walker"
+}
+]
+},
+{
+"cat": "lower",
+"name": "Hip Brace",
+"desc": "Adjustable hip abduction brace",
+"url": "https://orlex.com.tr/product-category/hip-brace/",
+"refs": [
+{
+"c": "ORX-KA 1001",
+"n": "HIP BRACE"
+}
+]
+},
+{
+"cat": "std",
+"name": "Standard Sizes Products",
+"desc": "Standard-sized line across shoulder, wrist, corset and support groups",
+"url": "https://orlex.com.tr/product-category/standard-sizes-products/",
+"refs": [
+{
+"c": "ORX-ST 111",
+"n": "Standard Shoulder Support"
+},
+{
+"c": "ORX-ST 112",
+"n": "Standard Velpeau Bandage"
+},
+{
+"c": "ORX-ST 113",
+"n": "Neoprene Standard De Quervain Splint"
+},
+{
+"c": "ORX-ST 114",
+"n": "Neoprene Standard Hand Splint"
+},
+{
+"c": "ORX-ST 114Ç Neoprene Standard Hand Splint (Double Side)",
+"n": ""
+},
+{
+"c": "ORX-ST 116",
+"n": "Standard Abdominal Corset"
+},
+{
+"c": "ORX-ST 117",
+"n": "Standard Posturex Bandage"
+},
+{
+"c": "ORX-ST 117S",
+"n": "Standard Posturex Bandage (Black)"
+},
+{
+"c": "ORX-ST 118",
+"n": "Standard Lumbostad Corset (26 cm)"
+},
+{
+"c": "ORX-ST 119",
+"n": "Standard Lumbosakral Corset (32 cm)"
+},
+{
+"c": "ORX-ST 120",
+"n": "Standard Dorsolomber Corset"
+},
+{
+"c": "ORX-ST 121",
+"n": "Neoprene Standard Abdominal Corset"
+},
+{
+"c": "ORX-ST 123",
+"n": "Standard Knee Support"
+},
+{
+"c": "ORX-ST 124",
+"n": "Standard Patella Knee Support"
+},
+{
+"c": "ORX-ST 125",
+"n": "Standard Patella & Ligament Knee Support"
+},
+{
+"c": "ORX-ST 127",
+"n": "Standard Tight Support"
+},
+{
+"c": "ORX-ST 128",
+"n": "Standard Claft Support"
+},
+{
+"c": "ORX-ST 129",
+"n": "Standard Cross Bandage Ankle Support"
+},
+{
+"c": "ORX-ST 131",
+"n": "Standard Ligament Ankle Support"
+},
+{
+"c": "ORX-ST 133",
+"n": "Boxer’s Fracture Splint"
+},
+{
+"c": "ORX-ST 134",
+"n": "Standard Middle Finger’s Fracture Splint"
+},
+{
+"c": "ORX-ST 138",
+"n": "Standard Post - Operative Breast Bandage"
+},
+{
+"c": "ORX-ST 141",
+"n": "Standard Lux Hand Splint (Double Side)"
+}
+]
+},
+{
+"cat": "paed",
+"name": "Pediatric Products",
+"desc": "Child-sized collars, splints, Pavlik harness and Tübingen orthosis",
+"url": "https://orlex.com.tr/product-category/pediatric-products/",
+"refs": [
+{
+"c": "ORX-CO 811",
+"n": "Soft Collar"
+},
+{
+"c": "ORX-CO 811D",
+"n": "Soft Collar"
+},
+{
+"c": "ORX-CO 812",
+"n": "Nelson Collar"
+},
+{
+"c": "ORX-CO 813",
+"n": "Philadelphia Collar"
+},
+{
+"c": "ORX-CO 814",
+"n": "Clavicula Bandage"
+},
+{
+"c": "ORX-CO 815",
+"n": "Arm Sling"
+},
+{
+"c": "ORX-CO 816",
+"n": "Velpeau Bandage"
+},
+{
+"c": "ORX-CO 817",
+"n": "Hand Wrist Splint"
+},
+{
+"c": "ORX-CO 818",
+"n": "Hand Wrist Splint With Thumb"
+},
+{
+"c": "ORX-CO 820",
+"n": "Child Inguinal Hernia Truss"
+},
+{
+"c": "ORX-CO 821",
+"n": "Pavlic Bandage"
+},
+{
+"c": "ORX-CO 822",
+"n": "Frejka Cushion"
+},
+{
+"c": "ORX-CO 823",
+"n": "D.K.C Orthosis"
+},
+{
+"c": "ORX-CO 824",
+"n": "Circumcision Panties"
+},
+{
+"c": "ORX-CO 825",
+"n": "Denis Browne Splint"
+},
+{
+"c": "ORX-CO 826",
+"n": "Hand Wrist Splint With Thumb"
+},
+{
+"c": "ORX-CO 827",
+"n": "Denis Brown Boot"
+},
+{
+"c": "ORX-CO 828",
+"n": "Patella Knee Support"
+},
+{
+"c": "ORX-CO 829",
+"n": "Immobilizer 25-30-35-40 cm"
+},
+{
+"c": "ORX-CO 830",
+"n": "Malleol Ankle Support"
+},
+{
+"c": "ORX-CO 831",
+"n": "Child Reflux Pillow"
+},
+{
+"c": "ORX-KA 1003",
+"n": "Tubingen Orthosis"
+}
+]
+},
+{
+"cat": "lower",
+"name": "Foot Health Products",
+"desc": "Silicone insoles, heel cups, toe separators, metatarsal pads",
+"url": "https://orlex.com.tr/product-category/foot-health-products/",
+"refs": [
+{
+"c": "ORX-AY 901",
+"n": "Metatarsal Pillow (Arch Support)"
+},
+{
+"c": "ORX-AY 903",
+"n": "Silicone Epin Heel"
+},
+{
+"c": "ORX-AY 905",
+"n": "Silicone Insoles Covered With Fabric"
+},
+{
+"c": "ORX-AY 906",
+"n": "Silicone Insoles"
+},
+{
+"c": "ORX-AY 907",
+"n": "Silicone Insoles With Ark Support"
+},
+{
+"c": "ORX-AY 908",
+"n": "Silicone Epin Heel"
+},
+{
+"c": "ORX-AY 909",
+"n": "Silicone Toe Seperator"
+},
+{
+"c": "ORX-AY 910",
+"n": "Silicone Toe Finger Ring"
+},
+{
+"c": "ORX-AY 911",
+"n": "Silicone Bunion Protector With Toe Seperator"
+},
+{
+"c": "ORX-AY 913",
+"n": "Silicone Bunion Protector With Pad"
+},
+{
+"c": "ORX-AY 914",
+"n": "Silicone Metatarsal Ped With Loop"
+},
+{
+"c": "ORX-AY 915",
+"n": "Silicone Metatarsal Ped"
+},
+{
+"c": "ORX-AY 917",
+"n": "Starfleks Insoles"
+},
+{
+"c": "ORX-AY 918",
+"n": "Starfleks Insoles With Epin"
+},
+{
+"c": "ORX-AY 919",
+"n": "Cork Insoles"
+},
+{
+"c": "ORX-AY 920",
+"n": "Cork Insoles With Epin"
+},
+{
+"c": "ORX-AY 921",
+"n": "UCBL Insoles"
+},
+{
+"c": "ORX-AY 922",
+"n": "Steel Insoles"
+},
+{
+"c": "ORX-AY 923",
+"n": "Elastic Hallux Valgus Day Splint"
+},
+{
+"c": "ORX-AY 924",
+"n": "Hallux Valgus Night Splint"
+},
+{
+"c": "ORX-AY 925",
+"n": "Hallux Valgus Shoe"
+},
+{
+"c": "ORX-AY 926",
+"n": "Cast Shoe"
+}
+]
+},
+{
+"cat": "rehab",
+"name": "Rehabilitation Supports",
+"desc": "Rehabilitation aids and orthopedic accessories",
+"url": "https://orlex.com.tr/product-category/rehabilitiation-supports/",
+"refs": [
+{
+"c": "ORX-AKS 01",
+"n": "Silicone Stress Ball"
+},
+{
+"c": "ORX-AKS 03",
+"n": "Adjustable Weight"
+},
+{
+"c": "ORX-AKS 08",
+"n": "Thera Band"
+},
+{
+"c": "ORX-AKS 14",
+"n": "Hemoroid Bathtub"
+},
+{
+"c": "ORX-AKS 17",
+"n": "Sand Weight"
+},
+{
+"c": "ORX-AKS 20",
+"n": "IV Drip Stand"
+},
+{
+"c": "ORX-AKS 27",
+"n": "Plastic WC Riser (With Lid)"
+}
+]
+},
+{
+"cat": "comp",
+"name": "Breast Prothesis",
+"desc": "Silicone breast prostheses and post-mastectomy bras",
+"url": "https://orlex.com.tr/product-category/breast-prothesis/",
+"refs": [
+{
+"c": "ORX-GP 01",
+"n": "Breast Prothesis Bra"
+},
+{
+"c": "ORX-GP 02",
+"n": "Silicone Breast Prothesis"
+}
+]
+},
+{
+"cat": "comp",
+"name": "Surgical Stockings",
+"desc": "Graduated compression stockings and anti-embolism hosiery",
+"url": "https://orlex.com.tr/product-category/surgical-stockings/",
+"refs": [
+{
+"c": "ORX-V 1006",
+"n": "Upper Knee Anti-Embolism Stocking"
+},
+{
+"c": "ORX-V 1007",
+"n": "Under Knee Anti-Embolism Stocking"
+},
+{
+"c": "ORX-V 1008",
+"n": "Thigh High Anti-Embolism Stocking (Waist Belt)"
+},
+{
+"c": "ORX-V 1009",
+"n": "Varis Socks Dressing Apparatus"
+},
+{
+"c": "ORX-V 1101",
+"n": "Under Knee Surgical Stocking (Open Toe)"
+},
+{
+"c": "ORX-V 1102",
+"n": "Under Knee Surgical Stocking (Open Toe)"
+},
+{
+"c": "ORX-V 1103",
+"n": "Upper Knee Surgical Stocking (Open Toe)"
+},
+{
+"c": "ORX-V 1104",
+"n": "Upper Knee Surgical Stocking (Closed Toe)"
+},
+{
+"c": "ORX-V 1105",
+"n": "Pentyhose Surgical Stocking (Open Toe)"
+},
+{
+"c": "ORX-V 1106",
+"n": "Pentyhose Surgical Stocking (Closed Toe)"
+},
+{
+"c": "ORX-V 1109",
+"n": "Pregnant Pantyhose Stockings"
+}
+]
+},
+{
+"cat": "rehab",
+"name": "Pillows, Seat & Lumbar Cushions",
+"desc": "Visco pillows, positioning and pressure-relief cushions",
+"url": "https://orlex.com.tr/product-category/pillows-seat-cushions-lumber-cushions/",
+"refs": [
+{
+"c": "ORX-BOD 21",
+"n": "Lumbar Cushion"
+},
+{
+"c": "ORX-BOD 22",
+"n": "Visco Lumbar Cushion"
+},
+{
+"c": "ORX-BOD 24",
+"n": "Seat Cushion"
+},
+{
+"c": "ORX-BOD 25",
+"n": "Visco Seat Cushion (Open)"
+},
+{
+"c": "ORX-BOD 28",
+"n": "Visco Wheelchair Cushion"
+},
+{
+"c": "ORX-BOD 30",
+"n": "Leg Position Cushion"
+},
+{
+"c": "ORX-BOD 32",
+"n": "Gluteal Seating Cushion"
+},
+{
+"c": "ORX-BOD 34",
+"n": "apers,"
+},
+{
+"c": "ORX-Y 1202",
+"n": "Visco Neck Pillow"
+},
+{
+"c": "ORX-Y 1203",
+"n": "Visco Neck Pillow With Gel (Anatomical)"
+},
+{
+"c": "ORX-Y 1204",
+"n": "Visco Classic Neck Pillow"
+},
+{
+"c": "ORX-Y 1205",
+"n": "Visco Classic Pillow With Gel"
+},
+{
+"c": "ORX-Y 1206",
+"n": "Visco Multi Purpose Pillow"
+},
+{
+"c": "ORX-Y 1207",
+"n": "Visco Travel Pillow"
+},
+{
+"c": "ORX-Y 1208",
+"n": "Reflux Pillow"
+}
+]
+},
+{
+"cat": "rehab",
+"name": "Metal & Aluminium Products",
+"desc": "Walking frames, crutches, canes and mobility aids",
+"url": "https://orlex.com.tr/product-category/metal-aluminium-products/",
+"refs": [
+{
+"c": "ORX-KRD 61",
+"n": "Moving Walker"
+},
+{
+"c": "ORX-KRD 61L",
+"n": "Moving Walker (Aluminium)"
+},
+{
+"c": "ORX-KRD 61T",
+"n": "Moving Walker (Wheeled)"
+},
+{
+"c": "ORX-KRD 62",
+"n": "Crutches"
+},
+{
+"c": "ORX-KRD 63",
+"n": "Canedien Elbow Crutches"
+},
+{
+"c": "ORX-KRD 64",
+"n": "Cane"
+},
+{
+"c": "ORX-KRD 65",
+"n": "Tripod"
+},
+{
+"c": "ORX-KRD 66",
+"n": "Quadtripot"
+},
+{
+"c": "ORX-KRD 67",
+"n": "Folding Comot"
+},
+{
+"c": "ORX-KRD 67D",
+"n": "Folding Comot (Leather Upholstery)"
+},
+{
+"c": "ORX-KRD 67T",
+"n": "Folding Comot (Wheeled)"
+},
+{
+"c": "ORX-KRD 68",
+"n": "Rubber Stick"
+}
+]
+}
+]
