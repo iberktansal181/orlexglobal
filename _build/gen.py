@@ -105,7 +105,7 @@ def footer(scripts=("assets/js/site.js",)):
       <div><h4>Company</h4><ul><li><a href="manufacturing.html">Manufacturing</a></li><li><a href="private-label.html">Private label / OEM</a></li><li><a href="distributors.html">Become a distributor</a></li><li><a href="certificates.html">Certificates</a></li><li><a href="https://www.orlex.com.tr" target="_blank" rel="noopener">orlex.com.tr &#8599;</a></li></ul></div>
       <div><h4>Export desk</h4><ul><li><a href="mailto:export@orlexglobal.com">export@orlexglobal.com</a></li><li><a href="tel:+905495011817">+90 549 501 18 17</a></li><li><a href="tel:+902125511869">+90 212 551 18 69</a></li><li>Yenibosna, Bahçelievler<br>Istanbul, Türkiye</li></ul></div>
     </div>
-    <div class="bottom"><span>&copy; <span data-year>2026</span> Efamed Medical &middot; ORLEX is an Efamed brand</span><span>CE marked &middot; ISO 13485 &middot; UDI registered</span></div>
+    <div class="bottom"><span>&copy; <span data-year>2026</span> Efamed Medical &middot; ORLEX is an Efamed brand</span><span>CE &middot; EU MDR Class I &middot; ISO 13485 &middot; EUDAMED SRN TR-MF-000031263</span></div>
   </div>
 </footer>
 {sc}
@@ -210,7 +210,7 @@ def route():
 def page_index():
     jsonld = {"@context":"https://schema.org","@type":"Organization","name":"ORLEX","legalName":"Efamed Medical","url":SITE,"logo":SITE+"/assets/img/orlex-mark-512.png","foundingDate":"1993","email":"export@orlexglobal.com","telephone":"+90 549 501 18 17","address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"},"sameAs":["https://www.orlex.com.tr"]}
     extra = '<script type="application/ld+json">' + json.dumps(jsonld) + '</script>\n'
-    out = head("index.html", "ORLEX — Orthopaedic Supports Manufacturer, Istanbul", "ORLEX manufactures orthopaedic supports, braces and orthoses in Istanbul since 1993. 300+ references, CE marked, ISO 13485. Export price list for distributors.", extra)
+    out = head("index.html", "ORLEX — Orthopaedic Supports Manufacturer, Istanbul", "ORLEX manufactures orthopaedic supports, braces and orthoses in Istanbul since 1993. 300+ references, CE marked under EU MDR (Class I), ISO 13485. Export price list for distributors.", extra)
     out += header("index.html")
     out += f'''<section class="hero">
   <div class="grid-lines" aria-hidden="true"></div>
@@ -218,12 +218,12 @@ def page_index():
     <div>
       <span class="eyebrow">Manufacturer &middot; Istanbul &middot; Since 1993</span>
       <h1 data-split>We make orthopaedic supports. <span class="accent">Not import them.</span></h1>
-      <p class="lede" data-reveal>Braces, supports and orthoses from our own production in Istanbul, shipped to distributors in more than 40 countries. Over 300 references, CE marked and UDI registered &mdash; and we are looking for partners in new markets.</p>
+      <p class="lede" data-reveal>Braces, supports and orthoses from our own production in Istanbul, shipped to distributors in more than 40 countries. Over 300 references, CE marked under EU MDR and registered in EUDAMED &mdash; and we are looking for partners in new markets.</p>
       <div class="hero-actions" data-reveal style="--d:.15s">
         <a class="btn" href="contact.html" data-magnetic>Request the export price list <span class="arr">&rarr;</span></a>
         <a class="btn ghost" href="products.html">Explore the range</a>
       </div>
-      <div class="hero-note" data-reveal style="--d:.25s"><span>CE marked</span><span>ISO 13485</span><span>UDI on every pack</span><span>Private label</span></div>
+      <div class="hero-note" data-reveal style="--d:.25s"><span>CE &middot; EU MDR Class I</span><span>ISO 13485</span><span>UDI on every pack</span><span>Private label</span></div>
     </div>
     {orbit()}
   </div>
@@ -241,7 +241,7 @@ def page_index():
   <div class="sec-head" data-reveal><div><span class="eyebrow">Why distributors choose ORLEX</span><h2>A manufacturer you can actually build a range on.</h2></div><a class="link" href="manufacturing.html">How we make it &rarr;</a></div>
   <div class="cards">
     {card("factory","Own production","Every reference is made in our facility in Istanbul. No trading layer between you and the line &mdash; and room to adjust specs and packing.",'<a class="link more" href="manufacturing.html">Manufacturing &rarr;</a>')}
-    {card("doc","Documents ready","CE marking, ISO 13485 / 9001 / 14001 / 45001, UDI-DI and GTIN per reference, IFUs in nine languages. Ready before you ask.",'<a class="link more" href="certificates.html">Certificates &rarr;</a>')}
+    {card("doc","Documents ready","EU MDR Class I declarations, EUDAMED registration, ISO 13485 / 9001 / 14001 / 45001, UDI-DI and GTIN per reference, IFUs in nine languages. Ready before you ask.",'<a class="link more" href="certificates.html">Certificates &rarr;</a>')}
     {card("tag","Your brand","Private label on product, box, label and IFU. We keep the regulatory side straight while the brand is yours.",'<a class="link more" href="private-label.html">Private label &rarr;</a>')}
     {card("hand","Clear terms","Export price list ex-works Istanbul in USD and EUR. FOB, CIF or DAP quoted per shipment. No surprises at the proforma.",'<a class="link more" href="distributors.html">Trade terms &rarr;</a>')}
   </div>
@@ -292,7 +292,7 @@ def page_manufacturing():
     <ul class="checks">
       <li>ISO 13485 quality management for medical devices</li>
       <li>ISO 9001, ISO 14001 and ISO 45001 alongside it</li>
-      <li>CE marked range, Declaration of Conformity available on request</li>
+      <li>EU MDR 2017/745 Class I: Declaration of Conformity per product group, EUDAMED SRN TR-MF-000031263</li>
       <li>UDI-DI and GTIN assigned to every reference</li>
       <li>Instructions for use printed in nine languages</li>
     </ul>
@@ -397,12 +397,12 @@ def seal(txt):
 
 def page_certificates():
     sample = "01/08682132200019/10/0127B201S1/"
-    out = head("certificates.html", "Certificates & compliance — ORLEX", "ORLEX compliance: CE marked range, ISO 13485, ISO 9001, ISO 14001 and ISO 45001 certified, UDI-DI and GTIN per reference, IFUs in nine languages.")
+    out = head("certificates.html", "Certificates & compliance — ORLEX", "ORLEX compliance: EU MDR 2017/745 Class I, EUDAMED SRN TR-MF-000031263, ISO 13485, ISO 9001, ISO 14001 and ISO 45001 certified, UDI-DI and GTIN per reference, IFUs in nine languages.")
     out += header("certificates.html")
     out += phero("Certificates", "Compliance", "The paperwork is already done.", "Most of what slows a new supplier down is documentation. Ours is in place before you ask &mdash; and we send the full set with the price list.",
                  '<div class="hero-actions"><a class="btn" href="contact.html" data-magnetic>Request the document set <span class="arr">&rarr;</span></a></div>')
     certs = [("13485","ISO 13485","Quality management system for medical devices.","Certified"),("9001","ISO 9001","Quality management system.","Certified"),("14001","ISO 14001","Environmental management system.","Certified"),("45001","ISO 45001","Occupational health and safety management.","Certified"),
-             ("CE","CE marking","The range is CE marked. Declaration of Conformity available on request.","On request"),("UDI","UDI","UDI-DI and GTIN assigned to every reference; EMDN and GMDN held per product group.","Every pack")]
+             ("MDR","EU MDR 2017/745","CE marked as Class I medical devices (Rule 1). Declaration of Conformity per product group, with Basic UDI-DI and full UDI-DI list. EUDAMED SRN TR-MF-000031263 &mdash; <a class=\"link\" href=\"https://ec.europa.eu/tools/eudamed/#/screen/search-eo?srn=TR-MF-000031263\" target=\"_blank\" rel=\"noopener\">verify on EUDAMED &#8599;</a>","Class I"),("UDI","UDI","UDI-DI and GTIN assigned to every reference; EMDN and GMDN held per product group.","Every pack")]
     cc = "".join(f'<article class="cert" data-reveal>{seal(s)}<h3>{t}</h3><p>{p}</p><span class="tag">{g}</span></article>' for s, t, p, g in certs)
     out += f'''<section class="band"><div class="wrap">
   <div class="certs">{cc}</div>
