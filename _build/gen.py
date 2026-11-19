@@ -36,6 +36,10 @@ ARCS = '''<svg class="arcs draw" viewBox="0 0 600 600" aria-hidden="true">
 <path d="M520 230a200 200 0 0 1-250 260" stroke="#3A5FA0" stroke-width="3"/>
 </svg>'''
 
+import hashlib as _h, pathlib as _p
+_R=_p.Path(__file__).resolve().parent.parent
+VER=_h.sha1(b"".join((_R/f).read_bytes() for f in ["assets/css/site.css","assets/js/site.js","assets/js/products-data.js","assets/js/bodymap-data.js"])).hexdigest()[:8]
+
 def head(page, title, desc, extra=""):
     canon = SITE + "/" + ("" if page == "index.html" else page)
     return f'''<!DOCTYPE html>
@@ -59,7 +63,7 @@ def head(page, title, desc, extra=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v={VER}">
 {extra}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -88,7 +92,7 @@ def footer(scripts=("assets/js/site.js",)):
     groups = "".join(f'<li><a href="products.html#{gid}">{E(n)}</a></li>' for gid, n in [
         ("knee-supports", "Knee supports"), ("corsets", "Corsets"), ("ankle-support-orthosis", "Ankle & foot"),
         ("hand-wrist-finger-splints", "Wrist & hand"), ("neck-collars", "Neck collars"), ("pediatric-products", "Pediatric")])
-    sc = "".join(f'<script src="{s}" defer></script>' for s in scripts)
+    sc = "".join(f'<script src="{s}?v={VER}" defer></script>' for s in scripts)
     return f'''</main>
 <footer class="ftr">
   <div class="wrap">
