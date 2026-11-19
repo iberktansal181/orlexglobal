@@ -262,7 +262,7 @@ h1,h2,h3,h4{color:var(--navy);font-weight:800;letter-spacing:-.025em;line-height
 .group.open .group-b{grid-template-rows:1fr}
 .group-b>div{overflow:hidden}
 .refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;padding:4px 26px 22px}
-.ref{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 12px 11px 14px;border-radius:12px;background:var(--mist);transition:background .2s}
+.ref{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 12px 8px 8px;border-radius:12px;background:var(--mist);transition:background .2s}
 .ref:hover{background:var(--mist-2)}
 .ref .c{font-size:12.5px;font-weight:800;color:var(--orange);letter-spacing:.02em;display:block}
 .ref .nm{font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.35}
@@ -435,3 +435,21 @@ h1,h2,h3,h4{color:var(--navy);font-weight:800;letter-spacing:-.025em;line-height
   .hero h1 .w>span{transform:none}
   .draw path,.draw circle{stroke-dashoffset:0}
 }
+
+/* product thumbnails */
+.ref .rt{flex:none;width:56px;height:56px;border-radius:10px;background:#fff;object-fit:contain;border:1px solid var(--line)}
+.ref .rt.none{display:block;background:linear-gradient(135deg,#fff,var(--mist-2))}
+.ref .rx{flex:1;min-width:0}
+.group-h .gi{overflow:hidden}
+.group-h .gi img{width:100%;height:100%;object-fit:contain;background:#fff}
+.group.open .group-h .gi:has(img){background:#fff;box-shadow:0 0 0 2px var(--orange)}
+.panel .codes{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 6px;border-radius:12px;background:var(--mist);border:1px solid var(--line);cursor:pointer;transition:border-color .2s,background .2s,transform .2s var(--ease)}
+.tile:hover{border-color:var(--navy);transform:translateY(-2px)}
+.tile .ti{width:56px;height:56px;border-radius:8px;object-fit:contain;background:#fff}
+.tile .ti.none{display:block;background:linear-gradient(135deg,#fff,var(--mist-2))}
+.tile b{font-size:11.5px;font-weight:800;color:var(--navy);white-space:nowrap}
+.tile.on{background:var(--orange-soft);border-color:var(--orange)}
+.tile.on b{color:var(--orange)}
+.tile.more{justify-content:center;cursor:default;color:var(--muted);font-weight:800;font-size:15px;background:transparent}
+.tile.more small{font-size:11px;font-weight:600}

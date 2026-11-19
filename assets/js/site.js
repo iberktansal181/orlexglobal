@@ -6,6 +6,7 @@
   var $=function(s,c){return (c||d).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))};
   var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
   var GROUPS=w.ORLEX_GROUPS||[];
+  var thumb=function(k,cls,lazy){return k?'<img class="'+cls+'" '+(lazy?'data-src':'src')+'="assets/img/p/'+encodeURIComponent(k)+'.webp" alt="" width="56" height="56" loading="lazy" decoding="async">':'<span class="'+cls+' none" aria-hidden="true"></span>'};
   var REGIONS={
     neck:{label:'Neck',title:'Neck & cervical'},
     shoulder:{label:'Shoulder',title:'Shoulder & arm'},
@@ -110,7 +111,7 @@
 
   /* ---------- body map (male front/back, from the ORLEX order app) ---------- */
   var BODY=w.ORLEX_BODY, byCode={};
-  GROUPS.forEach(function(g){g.refs.forEach(function(r){byCode[r[0]]={g:g,n:r[1]}})});
+  GROUPS.forEach(function(g){g.refs.forEach(function(r){byCode[r[0]]={g:g,n:r[1],t:r[2]}})});
   $$('[data-bodymap]').forEach(function(map){
     if(!BODY)return;
     var NS='http://www.w3.org/2000/svg',svg=$('.figure svg',map),panel=$('.panel',map),pills=$('.region-pills',map),kidsBox=$('.kids input',map),
@@ -129,11 +130,11 @@
     function show(){
       var codes=list(sel),gs={},order=[];
       codes.forEach(function(c){var x=byCode[c];if(!x)return;if(!gs[x.g.id]){gs[x.g.id]={g:x.g,n:0};order.push(x.g.id)}gs[x.g.id].n++});
-      var chips=codes.slice(0,14).map(function(c){return '<button type="button" class="chip pick" data-code="'+esc(c)+'" title="'+esc(byCode[c]?byCode[c].n:'')+'">'+esc(c.replace('ORX-',''))+'</button>'}).join('');
+      var chips=codes.slice(0,12).map(function(c){var x=byCode[c]||{};return '<button type="button" class="tile pick" data-code="'+esc(c)+'" title="'+esc(x.n||'')+'">'+thumb(x.t,'ti',false)+'<b>'+esc(c.replace('ORX-',''))+'</b></button>'}).join('');
       panel.innerHTML='<div class="panel-enter"><div class="region" style="--c:'+BODY.colors[sel]+'"><i></i>'+(kids?'Children · ':'')+'Body region</div><h3>'+BODY.names[sel]+'</h3><div class="meta">'+
         (codes.length?(order.length+' product group'+(order.length>1?'s':'')+' · '+codes.length+' reference'+(codes.length>1?'s':'')):'No '+(kids?'children’s ':'')+'products for this region')+'</div><ul>'+
         order.map(function(id){var o=gs[id];return '<li><a href="'+linkBase+'#'+id+'"><span>'+esc(o.g.name)+'</span><small>'+o.n+' ref'+(o.n>1?'s':'')+' →</small></a></li>'}).join('')+'</ul>'+
-        (codes.length?'<p class="hint-s">Tap a code to add it to your enquiry</p><div class="codes">'+chips+(codes.length>14?'<span class="chip more">+'+(codes.length-14)+' more</span>':'')+'</div>':'')+'</div>';
+        (codes.length?'<p class="hint-s">Tap a code to add it to your enquiry</p><div class="codes">'+chips+(codes.length>12?'<span class="tile more">+'+(codes.length-12)+'<small>more</small></span>':'')+'</div>':'')+'</div>';
       updateTray(false);
     }
     function pick(r){if(!list(r).length)return;sel=r;$$('.z,.d',svg).forEach(function(el){el.classList.toggle('on',el.getAttribute('data-r')===r)});$$('button',pills).forEach(function(b){b.classList.toggle('on',b.getAttribute('data-r')===r)});show()}
@@ -145,6 +146,7 @@
     $$('.seg button',map).forEach(function(b){b.addEventListener('click',function(){view=b.getAttribute('data-view');$$('.seg button',map).forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});
       if(!BODY.fig[view].p[sel]){sel=view==='back'?'back':'chest'}draw();show()})});
     if(kidsBox)kidsBox.addEventListener('change',function(){kids=kidsBox.checked;if(!list(sel).length){var f=Object.keys(BODY.fig[view].p).filter(function(r){return list(r).length});sel=f.indexOf('hip')>-1?'hip':f[0]}draw();show()});
+    if(!BODY.names[sel]||!list(sel).length||!BODY.fig[view].p[sel])sel=Object.keys(BODY.fig[view].p).filter(function(r){return list(r).length})[0];
     draw();show();
   });
 
@@ -155,11 +157,11 @@
     var totals={all:0};GROUPS.forEach(function(g){totals.all+=g.refs.length;totals[g.cat]=(totals[g.cat]||0)+g.refs.length});
     filt.innerHTML=Object.keys(CATS).filter(function(k){return totals[k]}).map(function(k){return '<button type="button" data-cat="'+k+'" class="'+(k==='all'?'on':'')+'">'+CATS[k]+'<span class="n">'+totals[k]+'</span></button>'}).join('');
     list.innerHTML=GROUPS.map(function(g){
-      return '<article class="group" id="'+g.id+'" data-cat="'+g.cat+'"><button type="button" class="group-h" aria-expanded="false"><span class="gi">'+esc(g.prefix)+'</span><span><h3>'+esc(g.name)+'</h3><p>'+esc(g.desc)+'</p></span><span class="cnt"><span class="k">'+g.refs.length+'</span> ref'+(g.refs.length===1?'':'s')+'</span><span class="tog" aria-hidden="true"></span></button>'+
-      '<div class="group-b"><div><div class="refs">'+g.refs.map(function(r){return '<div class="ref" data-t="'+esc((r[0]+' '+r[0].replace(/\s/g,'')+' '+r[1]).toLowerCase())+'"><span><span class="c">'+esc(r[0])+'</span><span class="nm">'+esc(r[1])+'</span></span><button type="button" class="add" data-code="'+esc(r[0])+'" aria-label="Add '+esc(r[0])+' to enquiry" aria-pressed="false"></button></div>'}).join('')+'</div>'+
+      return '<article class="group" id="'+g.id+'" data-cat="'+g.cat+'"><button type="button" class="group-h" aria-expanded="false"><span class="gi">'+(g.refs[0][2]?'<img src="assets/img/p/'+encodeURIComponent(g.refs[0][2])+'.webp" alt="" width="48" height="48" loading="lazy" decoding="async">':esc(g.prefix))+'</span><span><h3>'+esc(g.name)+'</h3><p>'+esc(g.desc)+'</p></span><span class="cnt"><span class="k">'+g.refs.length+'</span> ref'+(g.refs.length===1?'':'s')+'</span><span class="tog" aria-hidden="true"></span></button>'+
+      '<div class="group-b"><div><div class="refs">'+g.refs.map(function(r){return '<div class="ref" data-t="'+esc((r[0]+' '+r[0].replace(/\s/g,'')+' '+r[1]).toLowerCase())+'">'+thumb(r[2],'rt',true)+'<span class="rx"><span class="c">'+esc(r[0])+'</span><span class="nm">'+esc(r[1])+'</span></span><button type="button" class="add" data-code="'+esc(r[0])+'" aria-label="Add '+esc(r[0])+' to enquiry" aria-pressed="false"></button></div>'}).join('')+'</div>'+
       '<div class="group-f"><a class="link" href="'+esc(g.url)+'" target="_blank" rel="noopener">Photos & size charts on orlex.com.tr ↗</a><button type="button" class="btn sm ghost add-all">Add all '+esc(g.prefix)+' codes to enquiry</button></div></div></div></article>';
     }).join('');
-    function setOpen(art,o){art.classList.toggle('open',o);$('.group-h',art).setAttribute('aria-expanded',o)}
+    function setOpen(art,o){art.classList.toggle('open',o);$('.group-h',art).setAttribute('aria-expanded',o);if(o)$$('img[data-src]',art).forEach(function(im){im.src=im.getAttribute('data-src');im.removeAttribute('data-src')})}
     list.addEventListener('click',function(e){
       var h=e.target.closest('.group-h');if(h){var a=h.parentNode;setOpen(a,!a.classList.contains('open'));return}
       var all=e.target.closest('.add-all');if(all){var art=all.closest('.group'),n=0;$$('.ref:not([hidden]) .add',art).forEach(function(b){var c=b.getAttribute('data-code');if(!has(c)){picked.push(c);n++}});save(picked);updateTray(true);toast(n+' codes added · <a href="contact.html">Review enquiry</a>')}
