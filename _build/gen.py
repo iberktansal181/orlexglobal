@@ -97,7 +97,7 @@ def footer(scripts=("assets/js/site.js",)):
         <a class="logo" href="index.html"><img src="assets/img/orlex-logo.png" alt="ORLEX" width="126" height="30"></a>
         <p>Orthopaedic supports and orthoses, manufactured by Efamed Medical in Istanbul since 1993.</p>
       </div>
-      <div><h4>Range</h4><ul>{groups}<li><a href="products.html">All {len(GROUPS)} groups &rarr;</a></li></ul></div>
+      <div><h4>Range</h4><ul>{groups}<li><a href="products.html">All {len(GROUPS)} groups &rarr;</a></li><li><a href="{CAT_URL}" {EXT}>Full catalogue &#8599;</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="manufacturing.html">Manufacturing</a></li><li><a href="private-label.html">Private label / OEM</a></li><li><a href="distributors.html">Become a distributor</a></li><li><a href="certificates.html">Certificates</a></li><li><a href="https://www.orlex.com.tr" target="_blank" rel="noopener">orlex.com.tr &#8599;</a></li></ul></div>
       <div><h4>Export desk</h4><ul><li><a href="mailto:export@orlexglobal.com">export@orlexglobal.com</a></li><li><a href="tel:+905495011817">+90 549 501 18 17</a></li><li><a href="tel:+902125511869">+90 212 551 18 69</a></li><li>Yenibosna, Bahçelievler<br>Istanbul, Türkiye</li></ul></div>
     </div>
@@ -121,6 +121,13 @@ def phero(crumb, eyebrow, title, lede, actions=""):
   </div>
 </section>
 '''
+
+CAT_URL = "https://www.orlex.com.tr/en/"
+CAT_PDF = "https://orlex.com.tr/wp-content/uploads/orlex-katalog-2022.pdf"
+EXT = 'target="_blank" rel="noopener"'
+
+def cat_strip():
+    return f'''<div class="cat-strip" data-reveal><div><span class="eyebrow">Full catalogue</span><h3>Photos, size charts and every variant.</h3><p>This site lists the export range by code. The complete ORLEX catalogue &mdash; product photos, measuring guides and all sizes &mdash; lives on our main site.</p></div><div class="cat-actions"><a class="btn" href="{CAT_URL}" {EXT} data-magnetic>Open orlex.com.tr <span class="arr">&#8599;</span></a><a class="btn ghost" href="{CAT_PDF}" {EXT}>PDF catalogue</a></div></div>'''
 
 def cta(title="Tell us your market. We’ll send the price list.", text="Distributors, importers, pharmacy and home-care chains: send your country and the product groups you work with. The export price list goes out the same week.", btn="Start an enquiry"):
     return f'''<section class="band tight"><div class="wrap"><div class="cta" data-reveal>
@@ -148,6 +155,7 @@ def bodymap(link="products.html", start="knee", heading=True):
   <div data-reveal style="--d:.1s">
     <div class="panel" aria-live="polite"></div>
     <div class="region-pills"></div>
+    <p class="cat-note">Need photos or size charts? <a class="link" href="{CAT_URL}" {EXT}>Full catalogue on orlex.com.tr &#8599;</a></p>
   </div>
 </div>'''
 
@@ -246,7 +254,7 @@ def page_products():
     out = head("products.html", "Product range — ORLEX orthopaedic supports", f"Browse {len(GROUPS)} ORLEX product groups and {NREFS} references: neck collars, corsets, knee, ankle, wrist and pediatric supports. Search by code and build your enquiry list.")
     out += header("products.html")
     out += phero("Products", "Product range", f"{len(GROUPS)} groups. Every code, searchable.", f"Search any reference by code or name, filter by body area, and add codes to your enquiry list. The full export price list with all 314 codes and sizes is sent on request.",
-                 '<div class="hero-actions"><a class="btn" href="#explorer" data-magnetic>Search the range <span class="arr">&darr;</span></a><a class="btn ghost" href="https://www.orlex.com.tr/en/" target="_blank" rel="noopener">Photos on orlex.com.tr &#8599;</a></div>')
+                 f'<div class="hero-actions"><a class="btn" href="#explorer" data-magnetic>Search the range <span class="arr">&darr;</span></a><a class="btn ghost" href="{CAT_URL}" {EXT}>Full catalogue on orlex.com.tr &#8599;</a></div>')
     out += f'''<section class="band tight tint"><div class="wrap">{bodymap(link="", start="knee")}</div></section>
 <section id="explorer" class="tint" style="padding-bottom:100px">
   <div class="explorer-bar"><div class="wrap">
@@ -256,7 +264,8 @@ def page_products():
   <div class="wrap">
     <p class="result-line" aria-live="polite"></p>
     <div class="groups"></div>
-    <div class="empty" hidden><h3>No reference matches that search.</h3><p>Try a code prefix like <b>DZ</b>, <b>K 5</b> or <b>A 7</b> &mdash; or <a class="link" href="contact.html">ask us directly</a>. We map customer lists to ORLEX codes line by line.</p></div>
+    {cat_strip()}
+    <div class="empty" hidden><h3>No reference matches that search.</h3><p>Try a code prefix like <b>DZ</b>, <b>K 5</b> or <b>A 7</b> &mdash; browse the <a class="link" href="{CAT_URL}" {EXT}>full catalogue on orlex.com.tr</a>, or <a class="link" href="contact.html">ask us directly</a>. We map customer lists to ORLEX codes line by line.</p></div>
   </div>
 </section>
 {cta("Picked your codes?","Your enquiry list travels with you to the contact page. Send it and we reply with prices, sizes and packing for exactly those references.","Review my enquiry")}'''
@@ -429,7 +438,7 @@ def page_contact():
   <aside class="side" data-reveal style="--d:.1s">
     <div class="card"><h3>Export</h3><p><a href="mailto:export@orlexglobal.com">export@orlexglobal.com</a><br><a href="tel:+905495011817">+90 549 501 18 17</a> &middot; WhatsApp<br><a href="tel:+902125511869">+90 212 551 18 69</a></p></div>
     <div class="card"><h3>Factory</h3><p>Saçsan Sanayi Sitesi, Çardak Sok. No:16-15<br>Çobançeşme Mah., Yenibosna<br>Bahçelievler, Istanbul, Türkiye</p></div>
-    <div class="card"><h3>Product photos & size charts</h3><p><a href="https://www.orlex.com.tr/en/" target="_blank" rel="noopener">orlex.com.tr &#8599;</a></p></div>
+    <div class="card"><h3>Full catalogue</h3><p>Photos, size charts, all variants:<br><a href="https://www.orlex.com.tr/en/" target="_blank" rel="noopener">orlex.com.tr &#8599;</a> &middot; <a href="https://orlex.com.tr/wp-content/uploads/orlex-katalog-2022.pdf" target="_blank" rel="noopener">PDF</a></p></div>
     <div class="card"><h3>Find us at</h3><p>MEDICA D&uuml;sseldorf &middot; Expomed Istanbul</p></div>
   </aside>
 </div></section>
