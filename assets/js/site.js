@@ -238,14 +238,29 @@
   }
   var form=$('#enquiry');
   if(form){
+    var W3F_KEY='9c2a6950-67b2-4559-a643-83b9b3974fed';
+    var btn=$('button[type=submit]',form),status=$('.form-status',form);
+    function say(cls,html){if(status){status.className='form-status '+cls;status.innerHTML=html;status.hidden=false}}
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var v=function(n){var el=form.elements[n];return el?el.value.trim():''};
-      if(!v('company')||!v('country')){toast('Please add your company and country');return}
-      var body='Company: '+v('company')+'\nName: '+v('name')+'\nCountry / market: '+v('country')+'\nBusiness type: '+v('type')+'\nEmail: '+v('email')+'\n\nProducts of interest: '+(picked.length?picked.join(', '):'-')+'\n\n'+v('message')+'\n';
+      if(!v('company')||!v('country')||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'))){toast('Please add your company, email and country');return}
+      if(form.elements.botcheck&&form.elements.botcheck.checked)return;
+      var codes=picked.length?picked.join(', '):'-';
+      var body='Company: '+v('company')+'\nName: '+v('name')+'\nCountry / market: '+v('country')+'\nBusiness type: '+v('type')+'\nEmail: '+v('email')+'\n\nProducts of interest: '+codes+'\n\n'+v('message')+'\n';
       var subj='Distributor enquiry - '+v('company')+' ('+v('country')+')';
-      w.location.href='mailto:export@orlexglobal.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-      toast('Opening your email app…');
+      var mailto='mailto:export@orlexglobal.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+      btn.disabled=true;btn.classList.add('busy');say('info','Sending&hellip;');
+      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({
+        access_key:W3F_KEY,subject:subj,from_name:'orlexglobal.com enquiry',replyto:v('email'),email:v('email'),
+        company:v('company'),name:v('name')||'-',country:v('country'),business_type:v('type'),products_of_interest:codes,message:v('message')||'-'
+      })}).then(function(r){return r.json().then(function(j){return {ok:r.ok&&j.success,j:j}})}).then(function(res){
+        if(!res.ok)throw new Error((res.j&&res.j.message)||'send failed');
+        picked=[];save(picked);updateTray(false);form.reset();
+        say('ok','<b>Thank you &mdash; your enquiry has reached our export desk.</b> We reply within one working day from export@orlexglobal.com.');
+      }).catch(function(){
+        say('err','We could not send the form just now. <a class="link" href="'+mailto+'">Send it by email instead</a> &mdash; your enquiry is filled in &mdash; or write to <a class="link" href="mailto:export@orlexglobal.com">export@orlexglobal.com</a>.');
+      }).then(function(){btn.disabled=false;btn.classList.remove('busy')});
     });
   }
 

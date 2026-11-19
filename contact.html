@@ -55,12 +55,14 @@
   <form id="enquiry" class="form" data-reveal novalidate>
     <div class="field"><label for="company">Company *</label><input id="company" name="company" required autocomplete="organization"></div>
     <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name"></div>
-    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
+    <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
     <div class="field"><label for="country">Country / market *</label><input id="country" name="country" required autocomplete="country-name"></div>
     <div class="field full"><label for="type">Business type</label><select id="type" name="type"><option>Importer / distributor</option><option>Pharmacy or home-care chain</option><option>Orthopaedic retail</option><option>Tender / public procurement</option><option>Private label brand</option><option>Other</option></select></div>
     <div class="field full"><label>Products of interest</label><div id="picked" class="picked"></div></div>
     <div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Product groups, rough quantities, target price, delivery terms&hellip;"></textarea></div>
-    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit" data-magnetic>Send enquiry <span class="arr">&rarr;</span></button><span class="hint">Opens your email app with the enquiry ready to send to export@orlexglobal.com.</span></div>
+    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn" type="submit" data-magnetic>Send enquiry <span class="arr">&rarr;</span></button><span class="hint">Goes straight to our export desk. We reply within one working day.</span></div>
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="form-status full" role="status" aria-live="polite" hidden></p>
   </form>
   <aside class="side" data-reveal style="--d:.1s">
     <div class="card"><h3>Export</h3><p><a href="mailto:export@orlexglobal.com">export@orlexglobal.com</a><br><a href="tel:+905495011817">+90 549 501 18 17</a> &middot; WhatsApp<br><a href="tel:+902125511869">+90 212 551 18 69</a></p></div>

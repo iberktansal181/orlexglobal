@@ -460,3 +460,10 @@ h1,h2,h3,h4{color:var(--navy);font-weight:800;letter-spacing:-.025em;line-height
 .cat-strip p{color:var(--muted);max-width:60ch;margin:0}
 .cat-actions{display:flex;gap:10px;flex-wrap:wrap}
 @media (max-width:760px){.cat-strip{grid-template-columns:1fr;padding:24px}}
+/* form status */
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-status{margin:4px 0 0;padding:14px 18px;border-radius:12px;font-size:15px;line-height:1.5}
+.form-status.info{background:var(--orange-soft);color:var(--navy)}
+.form-status.ok{background:#E8F6EE;color:#14532D;box-shadow:inset 0 0 0 1.5px #9FD8B5}
+.form-status.err{background:#FDECEC;color:#7F1D1D;box-shadow:inset 0 0 0 1.5px #F3B4B4}
+.btn.busy{opacity:.6;pointer-events:none}
