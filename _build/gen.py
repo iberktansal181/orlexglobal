@@ -58,7 +58,7 @@ def head(page, title, desc, extra=""):
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 {extra}</head>
 <body>
@@ -82,7 +82,9 @@ def header(page):
 <main id="main">
 '''
 
-def footer(scripts=("assets/js/products-data.js", "assets/js/site.js")):
+DATA = ("assets/js/products-data.js", "assets/js/bodymap-data.js", "assets/js/site.js")
+
+def footer(scripts=("assets/js/site.js",)):
     groups = "".join(f'<li><a href="products.html#{gid}">{E(n)}</a></li>' for gid, n in [
         ("knee-supports", "Knee supports"), ("corsets", "Corsets"), ("ankle-support-orthosis", "Ankle & foot"),
         ("hand-wrist-finger-splints", "Wrist & hand"), ("neck-collars", "Neck collars"), ("pediatric-products", "Pediatric")])
@@ -133,32 +135,19 @@ def card(icon, title, text, more=""):
 
 # ---------- shared widgets ----------
 def bodymap(link="products.html", start="knee", heading=True):
-    spots = [("neck",150,92),("shoulder",104,116),("elbow",76,198),("hand",58,282),("spine",150,186),("hip",186,286),("knee",124,388),("leg",178,440),("foot",124,520)]
-    labels = {"neck":"Neck","shoulder":"Shoulder","elbow":"Elbow","hand":"Wrist & hand","spine":"Back","hip":"Hip","knee":"Knee","leg":"Leg","foot":"Ankle & foot"}
-    sp = "".join(f'<g class="spot" data-region="{r}" tabindex="0" role="button" aria-label="{labels[r]}"><circle class="pulse" cx="{x}" cy="{y}" r="11"/><circle class="dot" cx="{x}" cy="{y}" r="7"/><text x="{x + (14 if x >= 150 else -14)}" y="{y + 4}" text-anchor="{"start" if x >= 150 else "end"}">{labels[r]}</text></g>' for r, x, y in spots)
-    pills = "".join(f'<button type="button" data-region="{r}">{labels[r]}</button>' for r, _, _ in spots)
-    limbs = [
-        "M108 112 L80 196 L62 278", "M192 112 L220 196 L238 278",
-        "M132 296 L126 390 L126 506 L114 528", "M168 296 L174 390 L174 506 L186 528"]
-    limb_o = "".join(f'<path d="{p}" fill="none" stroke="#B9C9E0" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/>' for p in limbs)
-    limb_i = "".join(f'<path d="{p}" fill="none" stroke="url(#silfill)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>' for p in limbs)
-    figure = f'''<svg viewBox="0 0 300 560" aria-label="Interactive body map">
-<defs><linearGradient id="silfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F7FB"/><stop offset="1" stop-color="#E4ECF6"/></linearGradient></defs>
-{limb_o}
-<path class="sil" d="M104 104 Q150 90 196 104 L204 122 Q210 200 190 252 L198 302 Q150 316 102 302 L110 252 Q90 200 96 122 Z"/>
-<rect class="sil" x="137" y="72" width="26" height="28" rx="8"/>
-<circle class="sil" cx="150" cy="46" r="30"/>
-{limb_i}
-<path class="bones" d="M150 100 L150 300 M112 300 Q150 320 188 300 M120 140 Q150 160 180 140"/>
-{sp}
-</svg>'''
-    head_html = f'''<div class="sec-head" data-reveal><div><span class="eyebrow">Product finder</span><h2>Start from the body, not the catalogue.</h2><p class="lede">Tap a region to see the ORLEX product groups that support it, with reference counts and codes.</p></div></div>''' if heading else ""
+    head_html = f'''<div class="sec-head" data-reveal><div><span class="eyebrow">Product finder</span><h2>Start from the body, not the catalogue.</h2><p class="lede">Tap a region to see the ORLEX product groups that support it. Switch to the back view, or show children’s products only.</p></div></div>''' if heading else ""
     return f'''{head_html}
 <div class="bodymap" data-bodymap data-link="{link}" data-start="{start}">
-  <div class="figure" data-reveal>{figure}</div>
+  <div class="figure-card" data-reveal>
+    <div class="fig-bar">
+      <div class="seg" role="group" aria-label="View"><button type="button" data-view="front" class="on" aria-pressed="true">Front</button><button type="button" data-view="back" aria-pressed="false">Back</button></div>
+      <label class="kids"><input type="checkbox"> Children’s products only</label>
+    </div>
+    <div class="figure"><svg viewBox="0 0 600 1000" role="group" aria-label="Body map: choose a region"></svg></div>
+  </div>
   <div data-reveal style="--d:.1s">
     <div class="panel" aria-live="polite"></div>
-    <div class="region-pills">{pills}</div>
+    <div class="region-pills"></div>
   </div>
 </div>'''
 
@@ -183,10 +172,7 @@ def orbit():
     <g class="spin"><circle class="ring dash" cx="250" cy="250" r="232"/></g>
     <circle class="ring" cx="250" cy="250" r="190"/>
     <g class="spin rev"><circle class="ring dash" cx="250" cy="250" r="150"/></g>
-    <g class="core">
-      <path class="cres-o" d="M152 300a112 112 0 0 0 214-10 96 96 0 0 1-180-58 112 112 0 0 0-34 68z"/>
-      <path class="cres-n" d="M348 200a112 112 0 0 0-214 10 96 96 0 0 1 180 58 112 112 0 0 0 34-68z"/>
-    </g>
+    <g class="core"><image class="mark" href="assets/img/orlex-mark-512.png" x="138" y="138" width="224" height="224"/>    </g>
   </svg></div>
   {s}
 </div>'''
@@ -253,7 +239,7 @@ def page_index():
   {timeline(FIRST_ORDER)}
 </div></section>
 {cta()}'''
-    out += footer()
+    out += footer(DATA)
     return out
 
 def page_products():
@@ -274,7 +260,7 @@ def page_products():
   </div>
 </section>
 {cta("Picked your codes?","Your enquiry list travels with you to the contact page. Send it and we reply with prices, sizes and packing for exactly those references.","Review my enquiry")}'''
-    out += footer()
+    out += footer(DATA)
     return out
 
 def page_manufacturing():
@@ -455,7 +441,19 @@ PAGES = {"index.html": page_index, "products.html": page_products, "manufacturin
          "private-label.html": page_private_label, "distributors.html": page_distributors,
          "certificates.html": page_certificates, "contact.html": page_contact}
 
+def write_data():
+    import re as _re
+    out = []
+    for x in GROUPS:
+        slug = _re.sub(r"[^a-z0-9]+", "-", x["name"].lower()).strip("-")
+        m = _re.match(r"ORX-([A-Z]+)", x["refs"][0]["c"])
+        out.append({"id": slug, "name": x["name"], "desc": x["desc"], "cat": x["cat"], "prefix": m.group(1) if m else "ORX",
+                    "url": x["url"], "refs": [[r["c"], r["n"]] for r in x["refs"]]})
+    with open(os.path.join(ROOT, "assets", "js", "products-data.js"), "w", encoding="utf-8") as f:
+        f.write("/* ORLEX product groups \u2014 generated by _build/gen.py from _build/groups.json */\nwindow.ORLEX_GROUPS=" + json.dumps(out, ensure_ascii=False, separators=(",", ":")) + ";\n")
+
 if __name__ == "__main__":
+    write_data()
     for name, fn in PAGES.items():
         with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
             f.write(fn())

@@ -68,9 +68,11 @@
   }
 
   /* ---------- pointer spotlight + magnetic ---------- */
+  var pmE=null;
   d.addEventListener('pointermove',function(e){
-    var c=e.target.closest&&e.target.closest('.card,.cert');
-    if(c){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}
+    if(pmE){pmE=e;return}pmE=e;
+    requestAnimationFrame(function(){var ev=pmE;pmE=null;var c=ev.target.closest&&ev.target.closest('.card,.cert');
+      if(c){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(ev.clientX-r.left)+'px');c.style.setProperty('--my',(ev.clientY-r.top)+'px')}});
   },{passive:true});
   if(!reduce&&w.matchMedia('(pointer:fine)').matches){
     $$('[data-magnetic]').forEach(function(b){
@@ -95,34 +97,55 @@
       var R=orbit.clientWidth*0.44;
       sats.forEach(function(s,k){var a=ang+k*(2*Math.PI/sats.length)-Math.PI/2;s.style.transform='translate(-50%,-50%) translate('+(Math.cos(a)*R).toFixed(1)+'px,'+(Math.sin(a)*R*0.92).toFixed(1)+'px)'});
     }
-    function tick(){if(!hover)ang+=0.0016;place();if(running)requestAnimationFrame(tick)}
+    var vis=true,raf=0;
+    function tick(){raf=0;if(!hover)ang+=0.0016;place();if(running&&vis&&!d.hidden)raf=requestAnimationFrame(tick)}
+    function kick(){if(running&&vis&&!d.hidden&&!raf)raf=requestAnimationFrame(tick)}
+    if('IntersectionObserver' in w)new IntersectionObserver(function(es){vis=es[0].isIntersecting;kick()}).observe(orbit);
+    d.addEventListener('visibilitychange',kick);
     orbit.addEventListener('pointerenter',function(){hover=true});
     orbit.addEventListener('pointerleave',function(){hover=false;if(core)core.style.transform=''});
     orbit.addEventListener('pointermove',function(e){if(!core||reduce)return;var r=orbit.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;core.style.transform='rotate('+(x*40)+'deg) translate('+(x*14)+'px,'+(y*14)+'px)'});
-    w.addEventListener('resize',place);place();if(running)requestAnimationFrame(tick);
+    w.addEventListener('resize',place);place();kick();
   }
 
-  /* ---------- body map ---------- */
-  function groupsFor(reg){return GROUPS.filter(function(g){return g.regions.indexOf(reg)>-1})}
+  /* ---------- body map (male front/back, from the ORLEX order app) ---------- */
+  var BODY=w.ORLEX_BODY, byCode={};
+  GROUPS.forEach(function(g){g.refs.forEach(function(r){byCode[r[0]]={g:g,n:r[1]}})});
   $$('[data-bodymap]').forEach(function(map){
-    var panel=$('.panel',map),spots=$$('.spot',map),pills=$$('.region-pills button',map),linkBase=map.getAttribute('data-link')||'products.html';
-    function show(reg){
-      spots.forEach(function(s){s.classList.toggle('on',s.getAttribute('data-region')===reg)});
-      pills.forEach(function(p){p.classList.toggle('on',p.getAttribute('data-region')===reg)});
-      var gs=groupsFor(reg),n=gs.reduce(function(a,g){return a+g.refs.length},0),R=REGIONS[reg];
-      var codes=[];gs.forEach(function(g){g.refs.slice(0,6).forEach(function(r){codes.push(r[0])})});
-      panel.innerHTML='<div class="panel-enter"><div class="region">Body region</div><h3>'+esc(R.title)+'</h3><div class="meta">'+gs.length+' product group'+(gs.length>1?'s':'')+' · '+n+' references</div><ul>'+
-        gs.map(function(g){return '<li><a href="'+linkBase+'#'+g.id+'"><span>'+esc(g.name)+'</span><small>'+g.refs.length+(g.refs.length===1?' ref':' refs')+' →</small></a></li>'}).join('')+
-        '</ul><div class="codes">'+codes.slice(0,10).map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join('')+'</div></div>';
+    if(!BODY)return;
+    var NS='http://www.w3.org/2000/svg',svg=$('.figure svg',map),panel=$('.panel',map),pills=$('.region-pills',map),kidsBox=$('.kids input',map),
+        linkBase=map.getAttribute('data-link')||'products.html',view='front',sel=map.getAttribute('data-start')||'knee',kids=false;
+    function list(r){return ((kids?BODY.kids:BODY.adult)[r])||[]}
+    function draw(){
+      var F=BODY.fig[view],html='<image href="assets/img/body-'+view+'.webp" x="0" y="0" width="600" height="1000"/><g class="zones">';
+      Object.keys(F.r).forEach(function(r){var n=list(r).length;html+='<g class="z'+(r===sel?' on':'')+(n?'':' empty')+'" data-r="'+r+'" style="--c:'+BODY.colors[r]+'">'+F.r[r].map(function(d){return '<path d="'+d+'"/>'}).join('')+'</g>'});
+      html+='</g><g class="dots">';
+      var MID={chest:1,abdomen:1,back:1,neck:1};
+      Object.keys(F.p).forEach(function(r){var n=list(r).length;F.p[r].forEach(function(pt){var x=(MID[r]&&F.p[r].length===1)?300:pt[0],y=pt[1];
+        html+='<g class="d'+(r===sel?' on':'')+(n?'':' empty')+'" data-r="'+r+'" style="--c:'+BODY.colors[r]+'" tabindex="'+(n?0:-1)+'" role="button" aria-label="'+BODY.names[r]+' · '+n+' references"><title>'+BODY.names[r]+' ('+n+')</title><circle class="hit" cx="'+x+'" cy="'+y+'" r="28"/><circle class="ring" cx="'+x+'" cy="'+y+'" r="12"/><circle class="dot" cx="'+x+'" cy="'+y+'" r="10"/><circle class="in" cx="'+x+'" cy="'+y+'" r="4"/></g>'})});
+      svg.innerHTML=html+'</g>';
+      pills.innerHTML=Object.keys(BODY.names).filter(function(r){return F.p[r]}).map(function(r){var n=list(r).length;return '<button type="button" data-r="'+r+'" class="'+(r===sel?'on':'')+'"'+(n?'':' disabled')+'><i style="background:'+BODY.colors[r]+'"></i>'+BODY.names[r]+'<span class="n">'+n+'</span></button>'}).join('');
     }
-    spots.forEach(function(s){
-      var r=s.getAttribute('data-region');
-      s.addEventListener('click',function(){show(r)});
-      s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(r)}});
-      s.addEventListener('pointerenter',function(){if(w.matchMedia('(pointer:fine)').matches)show(r)});
-    });
-    pills.forEach(function(p){p.addEventListener('click',function(){show(p.getAttribute('data-region'))})});
-    show(map.getAttribute('data-start')||'knee');
+    function show(){
+      var codes=list(sel),gs={},order=[];
+      codes.forEach(function(c){var x=byCode[c];if(!x)return;if(!gs[x.g.id]){gs[x.g.id]={g:x.g,n:0};order.push(x.g.id)}gs[x.g.id].n++});
+      var chips=codes.slice(0,14).map(function(c){return '<button type="button" class="chip pick" data-code="'+esc(c)+'" title="'+esc(byCode[c]?byCode[c].n:'')+'">'+esc(c.replace('ORX-',''))+'</button>'}).join('');
+      panel.innerHTML='<div class="panel-enter"><div class="region" style="--c:'+BODY.colors[sel]+'"><i></i>'+(kids?'Children · ':'')+'Body region</div><h3>'+BODY.names[sel]+'</h3><div class="meta">'+
+        (codes.length?(order.length+' product group'+(order.length>1?'s':'')+' · '+codes.length+' reference'+(codes.length>1?'s':'')):'No '+(kids?'children’s ':'')+'products for this region')+'</div><ul>'+
+        order.map(function(id){var o=gs[id];return '<li><a href="'+linkBase+'#'+id+'"><span>'+esc(o.g.name)+'</span><small>'+o.n+' ref'+(o.n>1?'s':'')+' →</small></a></li>'}).join('')+'</ul>'+
+        (codes.length?'<p class="hint-s">Tap a code to add it to your enquiry</p><div class="codes">'+chips+(codes.length>14?'<span class="chip more">+'+(codes.length-14)+' more</span>':'')+'</div>':'')+'</div>';
+      updateTray(false);
+    }
+    function pick(r){if(!list(r).length)return;sel=r;$$('.z,.d',svg).forEach(function(el){el.classList.toggle('on',el.getAttribute('data-r')===r)});$$('button',pills).forEach(function(b){b.classList.toggle('on',b.getAttribute('data-r')===r)});show()}
+    svg.addEventListener('click',function(e){var t=e.target.closest('[data-r]');if(t)pick(t.getAttribute('data-r'))});
+    svg.addEventListener('keydown',function(e){var t=e.target.closest('[data-r]');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();pick(t.getAttribute('data-r'))}});
+    svg.addEventListener('pointerover',function(e){var t=e.target.closest('[data-r]');$$('.z',svg).forEach(function(z){z.classList.toggle('hov',!!t&&z.getAttribute('data-r')===t.getAttribute('data-r'))})});
+    svg.addEventListener('pointerleave',function(){$$('.z.hov',svg).forEach(function(z){z.classList.remove('hov')})});
+    pills.addEventListener('click',function(e){var b=e.target.closest('button[data-r]');if(b)pick(b.getAttribute('data-r'))});
+    $$('.seg button',map).forEach(function(b){b.addEventListener('click',function(){view=b.getAttribute('data-view');$$('.seg button',map).forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});
+      if(!BODY.fig[view].p[sel]){sel=view==='back'?'back':'chest'}draw();show()})});
+    if(kidsBox)kidsBox.addEventListener('change',function(){kids=kidsBox.checked;if(!list(sel).length){var f=Object.keys(BODY.fig[view].p).filter(function(r){return list(r).length});sel=f.indexOf('hip')>-1?'hip':f[0]}draw();show()});
+    draw();show();
   });
 
   /* ---------- explorer ---------- */
@@ -158,7 +181,7 @@
       line.innerHTML=shown?('Showing <b>'+gshown+'</b> group'+(gshown>1?'s':'')+' · <b>'+shown+'</b> reference'+(shown===1?'':'s')+(term?' matching “'+esc(q.value.trim())+'”':'')):'';
       var em=$('.empty',ex);em.hidden=shown>0;
     }
-    q.addEventListener('input',apply);
+    var qT;q.addEventListener('input',function(){clearTimeout(qT);qT=setTimeout(apply,90)});
     filt.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cat=b.getAttribute('data-cat');$$('button',filt).forEach(function(x){x.classList.toggle('on',x===b)});apply()});
     function fromHash(){var id=decodeURIComponent((location.hash||'').slice(1)),el=id&&d.getElementById(id);if(el&&el.classList.contains('group')){setOpen(el,true);setTimeout(function(){el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})},60)}
       var p=new URLSearchParams(location.search);if(p.get('q')){q.value=p.get('q')}}
@@ -227,6 +250,7 @@
   /* ---------- year ---------- */
   $$('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear()});
 
-  w.addEventListener('scroll',onScroll,{passive:true});w.addEventListener('resize',onScroll);
+  var ticking=false;function reqScroll(){if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;onScroll()})}}
+  w.addEventListener('scroll',reqScroll,{passive:true});w.addEventListener('resize',reqScroll);
   updateTray(false);onScroll();
 })();
