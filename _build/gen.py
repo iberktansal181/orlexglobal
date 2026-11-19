@@ -445,7 +445,7 @@ THUMBS = set(json.load(open(os.path.join(ROOT, "_build", "thumbs.json"), encodin
 
 def _thumb(code):
     import re as _re
-    k = _re.sub(r"[^A-Z0-9Ç]", "", code.upper().replace("ORX", ""))
+    k = _re.sub(r"[^A-Z0-9]", "", code.upper().replace("ORX", "").replace("Ç", "C"))
     return k if k in THUMBS else ""
 
 def write_data():
